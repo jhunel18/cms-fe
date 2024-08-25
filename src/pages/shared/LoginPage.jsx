@@ -1,5 +1,5 @@
 import React from 'react'
-import LoginLayout from '../../shared/components/layouts/LoginLayout';
+import LoginLayout from '../../layouts/LoginLayout';
 import LoginComponent from '../../components/login/LoginComponent';
 
 const LoginPage = () => {

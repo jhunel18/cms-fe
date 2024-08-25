@@ -66,12 +66,12 @@ const LoginComponent = ({ onSubmit }) => {
                   required
                 />
               </Form.Group>
-              <Form.Group controlId="remember" className="mb-3">
+              {/* <Form.Group controlId="remember" className="mb-3">
                 <Form.Check
                   type="checkbox"
                   label="Remember Me"
                 />
-              </Form.Group>
+              </Form.Group> */}
               <div className="text-right mb-3">
                 <Button variant="link" className="p-0">Forgot Password</Button>
               </div>
