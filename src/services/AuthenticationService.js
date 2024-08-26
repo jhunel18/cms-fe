@@ -1,6 +1,6 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
-import {jwtDecode} from 'jwt-decode';
+import { getUserRole } from '../utils/TokenHelpers';
 
 const API_URL = 'http://localhost:8080';
 
@@ -13,22 +13,25 @@ export const AuthenticationService = {
         },
       });
 
-      const token = response.data.accessToken; // Adjust according to the structure
-      
+      const token = response.data.accessToken;
       if (token) {
-        const decodedToken = jwtDecode(token);
-        const userRole = decodedToken.roles[0];
-        
-        if (!['ROLE_USER', 'ROLE_ADMIN'].includes(userRole)) {
+        Cookies.set('auth_token', token, { expires: 7 });
+        const userRole = getUserRole();
+
+        if (!userRole || !['role_user', 'role_admin'].includes(userRole)) {
           throw new Error('Invalid user role');
         }
-        Cookies.set('auth_token', token, { expires: 7 });
-        return userRole.toLowerCase(); // Return the role (admin/user)
+
+        return userRole; // Return the role (admin/user)
       } else {
         throw new Error('Token is undefined');
       }
     } catch (error) {
       throw new Error(`Login failed: ${error.response ? error.response.data.message : error.message}`);
     }
+  },
+
+  logout() {
+    Cookies.remove('auth_token');
   },
 };

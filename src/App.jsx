@@ -8,6 +8,7 @@ import ForbiddenPage from './pages/shared/ForbiddenPage';
 import {Routes, Route} from 'react-router-dom'
 import ProtectedRoute from './components/protected/ProtectedRoute';
 import NotFoundPage from './pages/shared/NotFoundPage';
+import RegisterUser from './pages/admin/RegisterUser'
 
 function App() {
   
@@ -19,16 +20,22 @@ function App() {
         <Route 
           path="/admin-dashboard" 
           element={
-            <ProtectedRoute component={AdminDashboardPage} requiredRole="ROLE_ADMIN" />
+            <ProtectedRoute component={AdminDashboardPage} requiredRole="role_admin" />
           } 
         />
-
+         <Route 
+          path="/register" 
+          element={
+            <ProtectedRoute component={RegisterUser} requiredRole="role_admin" />
+          } 
+        />
         <Route 
           path="/user-dashboard" 
           element={
-            <ProtectedRoute component={UserDashboardPage} requiredRole="ROLE_USER" />
+            <ProtectedRoute component={UserDashboardPage} requiredRole="role_user" />
           } 
         />
+        
         <Route path = "*" element= {<NotFoundPage/>}/>
   </Routes>
   )
