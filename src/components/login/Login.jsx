@@ -4,7 +4,7 @@ import { Form, Button, Card, Container, Row, Col } from 'react-bootstrap';
 import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
-const LoginComponent = ({ onSubmit }) => {
+const Login = ({ onSubmit }) => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const navigate = useNavigate();
 
@@ -86,4 +86,4 @@ const LoginComponent = ({ onSubmit }) => {
   );
 };
 
-export default LoginComponent;
+export default Login;

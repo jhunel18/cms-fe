@@ -1,18 +1,16 @@
 import React from 'react';
+import useAuth from '../../hooks/UseAuth';
 import { Navigate } from 'react-router-dom';
-import { getToken, getUserRoleFromToken } from '../../utils/TokenHelpers';
 
 const ProtectedRoute = ({ component: Component, requiredRole, ...rest }) => {
-  const token = getToken();
-  
-  if (!token) {
-    // User is not authenticated
-    return <Navigate to="/forbidden" />;
+  const { userRole, loading } = useAuth();
+
+  if (loading) {
+    return <div>Loading...</div>; // Show a loading indicator while the auth status is being determined
   }
 
-  const userRole = getUserRoleFromToken(token);
-  if (requiredRole && userRole !== requiredRole) {
-    // User does not have the required role
+  if (!userRole || (requiredRole && userRole !== requiredRole)) {
+    // User is not authenticated or does not have the required role
     return <Navigate to="/forbidden" />;
   }
 

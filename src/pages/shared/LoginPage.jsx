@@ -1,14 +1,14 @@
 import React from 'react'
 import LoginLayout from '../../layouts/LoginLayout';
-import LoginComponent from '../../components/login/LoginComponent';
+import Login from '../../components/login/Login';
 
 const LoginPage = () => {
   const handleLogin = (credentials) => {
-    console.log('Login successful:', credentials);
+    console.log('Login successful');
 };
   return (
     <LoginLayout>
-    <LoginComponent onSubmit={handleLogin}/>
+    <Login onSubmit={handleLogin}/>
   </LoginLayout>
   )
 }

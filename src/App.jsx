@@ -8,7 +8,7 @@ import ForbiddenPage from './pages/shared/ForbiddenPage';
 import {Routes, Route} from 'react-router-dom'
 import ProtectedRoute from './components/protected/ProtectedRoute';
 import NotFoundPage from './pages/shared/NotFoundPage';
-import RegisterUser from './pages/admin/RegisterUser'
+import RegisterUser from './pages/admin/RegisterUserPage'
 
 function App() {
   
