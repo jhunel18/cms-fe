@@ -1,8 +1,34 @@
 import React from 'react'
+import { Navbar, Dropdown } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import { AuthenticationService } from '../services/AuthenticationService';
+const Header = ({username}) => {
 
-const Header = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    AuthenticationService.logout();
+    navigate('/'); // Redirect to the login page after logout
+  };
   return (
-    <div>Header</div>
+    <Navbar bg="secondary" variant="dark" expand="lg" className="px-4 fixed-top">
+      <Navbar.Brand href="#">Dashboard</Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse className="justify-content-end">
+        <Dropdown align="end">
+          <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+            {username}
+          </Dropdown.Toggle>
+
+          <Dropdown.Menu>
+            <Dropdown.Item href="#profile">Profile</Dropdown.Item>
+            <Dropdown.Item href="#settings">Settings</Dropdown.Item>
+            <Dropdown.Divider />
+            <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+      </Navbar.Collapse>
+    </Navbar>
   )
 }
 

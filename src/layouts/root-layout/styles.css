@@ -1,0 +1,48 @@
+.root-layout{
+    display: flex;
+    height: 100vh;
+    background-color: #f5f6fa; /* Light gray background */
+  }
+  /* Main content */
+.dashboard-content {
+    flex-grow: 1;
+    margin-left: 250px; /* Adjust for sidebar width */
+    padding: 20px;
+    padding-top: 80px; /* Adjust for header height */
+    background-color: #ffffff;
+    overflow-y: auto;
+  }
+
+  /* Main content h2 styling */
+.dashboard-content h2 {
+    margin-top: 0;
+  }
+  
+  /* Responsive design adjustments */
+  @media screen and (max-width: 768px) {
+    .dashboard-sidebar {
+      width: 200px;
+    }
+  
+    .dashboard-content {
+      margin-left: 200px;
+    }
+  }
+  @media screen and (max-width: 576px) {
+    .dashboard-sidebar {
+      width: 100px;
+    }
+  
+    .dashboard-content {
+      margin-left: 100px;
+    }
+  
+    .dashboard-sidebar li {
+      padding: 10px;
+      text-align: center;
+    }
+  
+    .dashboard-header {
+      font-size: 16px;
+    }
+  }  
