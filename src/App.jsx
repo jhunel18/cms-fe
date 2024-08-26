@@ -9,6 +9,7 @@ import {Routes, Route} from 'react-router-dom'
 import ProtectedRoute from './components/protected/ProtectedRoute';
 import NotFoundPage from './pages/shared/NotFoundPage';
 import RegisterUser from './pages/admin/RegisterUserPage'
+import SuppliesPage from './pages/user/SuppliesPage';
 
 function App() {
   
@@ -24,7 +25,7 @@ function App() {
           } 
         />
          <Route 
-          path="/register" 
+          path="/manage-users" 
           element={
             <ProtectedRoute component={RegisterUser} requiredRole="role_admin" />
           } 
@@ -33,6 +34,12 @@ function App() {
           path="/user-dashboard" 
           element={
             <ProtectedRoute component={UserDashboardPage} requiredRole="role_user" />
+          } 
+        />
+        <Route 
+          path="/supplies" 
+          element={
+            <ProtectedRoute component={SuppliesPage} requiredRole="role_user" />
           } 
         />
         
