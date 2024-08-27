@@ -45,7 +45,7 @@ const Login = ({ onSubmit }) => {
               <Form.Group controlId="email">
                 <Form.Label className="font-weight-bold">Email</Form.Label>
                 <Form.Control
-                  size="lg"
+                  size="sm"
                   type="email"
                   name="email"
                   value={formData.email}
@@ -57,7 +57,7 @@ const Login = ({ onSubmit }) => {
               <Form.Group controlId="password">
                 <Form.Label className="font-weight-bold">Password</Form.Label>
                 <Form.Control
-                size="lg"
+                size="sm"
                   type="password"
                   name="password"
                   value={formData.password}
@@ -75,7 +75,7 @@ const Login = ({ onSubmit }) => {
               <div className="text-right mb-3">
                 <Button variant="link" className="p-0">Forgot Password</Button>
               </div>
-              <Button variant="primary" size="lg" type="submit" block>
+              <Button variant="primary" size="md" type="submit" block>
                 Sign In
               </Button>
             </Form>

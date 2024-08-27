@@ -11,8 +11,8 @@ const Header = ({username}) => {
     navigate('/'); // Redirect to the login page after logout
   };
   return (
-    <Navbar bg="secondary" variant="dark" expand="lg" className="px-4 fixed-top">
-      <Navbar.Brand href="#">Dashboard</Navbar.Brand>
+    <Navbar bg="secondary" variant="light" expand="lg" className=" bg-body-tertiary px-4 fixed-top">
+      <Navbar.Brand href="#">PUP Clinic Inventory Management System</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse className="justify-content-end">
         <Dropdown align="end">

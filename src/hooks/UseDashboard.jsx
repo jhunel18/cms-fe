@@ -10,7 +10,7 @@ export function useDashboardData(role) {
             setMenuItems(['Dashboard', 'Manage Users', 'Reports']);
             setUsername(role);
         } else {
-            setMenuItems(['Dashboard', 'My Profile', 'Supplies', 'Settings']);
+            setMenuItems(['Dashboard', 'My Profile', 'Supplies', 'Treatment Record', 'Reports']);
             setUsername(role);
         }
     }, [role]);

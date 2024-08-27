@@ -4,8 +4,7 @@ import { getUserRole } from '../../utils/TokenHelpers';
 import {useDashboardData} from '../../hooks/UseDashboard'
 
 const UserDashboardPage = () => {
-  // const userMenuItems = ['Dashboard', 'My Profile', 'Settings'];
-  // const userUsername = getUserRole();  // Define the username here
+
   const { menuItems, username } = useDashboardData(getUserRole());
   return (
     <RootLayout menuItems={menuItems} username={username}>
