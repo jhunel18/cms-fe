@@ -7,10 +7,20 @@ export function useDashboardData(role) {
     useEffect(() => {
         // Fetch data based on the role
         if (role === 'role_admin') {
-            setMenuItems(['Dashboard', 'Manage Users', 'Reports']);
+            setMenuItems([
+                { name: 'Dashboard', icon: 'tachometer-alt' },
+                { name: 'Manage Users', icon: 'users-cog' },
+                { name: 'Reports', icon: 'file-alt' },
+              ]);
             setUsername(role);
         } else {
-            setMenuItems(['Dashboard', 'My Profile', 'Supplies', 'Treatment Record', 'Reports']);
+            setMenuItems([
+                { name: 'Dashboard', icon: 'tachometer-alt' },
+                { name: 'My Profile', icon: 'user' },
+                { name: 'Supplies', icon: 'cogs' },
+                { name: 'Treatment Record', icon: 'notes-medical' },
+                { name: 'Reports', icon: 'file-alt' },
+              ]);
             setUsername(role);
         }
     }, [role]);

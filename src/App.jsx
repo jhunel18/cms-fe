@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import UserDashboardPage from './pages/user/UserDashboardPage';
 import AdminDashboardPage from './pages/admin/AdminDashboardPage'
