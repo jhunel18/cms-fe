@@ -10,9 +10,9 @@ const RootLayout = ({children, menuItems, username}) => {
     <Container fluid>
       <Row>
         <Col md={3} lg={2} className="p-0">
-          <Sidebar menuItems={menuItems} />
+          <Sidebar menuItems={menuItems} username={username} />
         </Col>
-        <Col md={9} lg={10} className="pt-3">
+        <Col md={9} lg={10} className="pt-3" style={{marginLeft:'250px', marginTop:'56px'}}>
           {children}
         </Col>
       </Row>

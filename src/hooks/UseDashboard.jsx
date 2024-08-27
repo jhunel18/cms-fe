@@ -16,10 +16,18 @@ export function useDashboardData(role) {
         } else {
             setMenuItems([
                 { name: 'Dashboard', icon: 'tachometer-alt' },
-                { name: 'My Profile', icon: 'user' },
-                { name: 'Supplies', icon: 'cogs' },
+                { name: 'Clients', icon: 'user' },
+                { name: 'Supplies', icon: 'suitcase-medical' },
                 { name: 'Treatment Record', icon: 'notes-medical' },
-                { name: 'Reports', icon: 'file-alt' },
+                { 
+                    name: 'Reports', 
+                    icon: 'file-alt',
+                    subMenu: [
+                      { name: 'Services Rendered', to: '/reports/medical-services' },
+                      { name: 'Supplies Report', to: '/reports/supplies-report' },
+                      { name: 'Inventory Report', to: '/reports/inventory-report' },
+                    ]
+                  },
               ]);
             setUsername(role);
         }
