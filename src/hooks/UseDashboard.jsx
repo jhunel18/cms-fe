@@ -8,14 +8,14 @@ export function useDashboardData(role) {
         // Fetch data based on the role
         if (role === 'role_admin') {
             setMenuItems([
-                { name: 'Dashboard', icon: 'tachometer-alt' },
+                { name: 'Admin Dashboard', icon: 'tachometer-alt' },
                 { name: 'Manage Users', icon: 'users-cog' },
                 { name: 'Reports', icon: 'file-alt' },
               ]);
             setUsername(role);
         } else {
             setMenuItems([
-                { name: 'Dashboard', icon: 'tachometer-alt' },
+                { name: 'User Dashboard', icon: 'tachometer-alt' },
                 { name: 'Clients', icon: 'user' },
                 { name: 'Supplies', icon: 'suitcase-medical' },
                 { name: 'Treatment Record', icon: 'notes-medical' },

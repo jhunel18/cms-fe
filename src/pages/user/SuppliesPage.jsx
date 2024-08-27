@@ -1,14 +1,15 @@
 import React from 'react'
+import RootLayout from '../../layouts/root-layout/RootLayout';
+import { getUserRole } from '../../utils/TokenHelpers';
+import {useDashboardData} from '../../hooks/UseDashboard'
 
 const SuppliesPage = () => {
+  const { menuItems, username } = useDashboardData(getUserRole());
   return (
-    <div>
-      <h1>SuppliesPage</h1>
-      <div>
-      <i className="fas fa-home" style={{ fontSize: '24px', color: 'blue' }}></i>
-      <i className="fas fa-user" style={{ fontSize: '24px', color: 'green' }}></i>
-    </div>
-    </div>
+    <RootLayout menuItems={menuItems} username={username}>
+      <h2>User, {username}</h2>
+       
+    </RootLayout>
   )
 }
 
