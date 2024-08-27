@@ -22,7 +22,7 @@ const Sidebar = ({menuItems, username }) => {
   };
 
   return (
-    <div className="text-white vh-100 p-3 position-fixed top-0 start-0" style={{ marginTop: '56px', width: '250px', background:'#FAFAFA', borderRight:'2px solid #263f73 '}}>
+    <div className="text-white vh-100 p-3 position-fixed top-0 start-0 " style={{ marginTop: '56px', width: '250px', background:'#FAFAFA', borderRight:'3px solid #263f73 '}}>
       <Nav className="flex-column">
         <p> Welcome, {username}</p>
         {menuItems.map((item, index) => (
