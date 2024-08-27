@@ -22,7 +22,7 @@ const Sidebar = ({menuItems, username }) => {
   };
 
   return (
-    <div className="text-white vh-100 p-3 position-fixed top-0 start-0" style={{ marginTop: '56px', width: '250px', background:'#263f73' }}>
+    <div className="text-white vh-100 p-3 position-fixed top-0 start-0" style={{ marginTop: '56px', width: '250px', background:'#FAFAFA', borderRight:'2px solid #263f73 '}}>
       <Nav className="flex-column">
         <p> Welcome, {username}</p>
         {menuItems.map((item, index) => (
@@ -30,7 +30,7 @@ const Sidebar = ({menuItems, username }) => {
             <Nav.Link
               as={Link}
               to={item.subMenu ? '#' : `/${item.name.toLowerCase().replace(/\s+/g, '-')}`}
-              className="text-white"
+              style={{color:'#263f73'}}
               onClick={(event) => handleClick(item, index, event)}
             >
               <i className={`fas fa-${item.icon}`} style={{ marginRight: '8px' }}></i>
@@ -43,7 +43,7 @@ const Sidebar = ({menuItems, username }) => {
                     key={subIndex}
                     as={Link}
                     to={subItem.to}
-                    className="text-white"
+                    style={{color:'#263f73'}}
                   >
                     {subItem.name}
                   </Nav.Link>
