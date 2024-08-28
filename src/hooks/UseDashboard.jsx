@@ -5,20 +5,19 @@ export function useDashboardData(role) {
     const [username, setUsername] = useState('');
 
     useEffect(() => {
-        // Fetch data based on the role
         if (role === 'role_admin') {
             setMenuItems([
-                { name: 'Admin Dashboard', icon: 'tachometer-alt' },
-                { name: 'Manage Users', icon: 'users-cog' },
-                { name: 'Reports', icon: 'file-alt' },
-              ]);
+                { name: 'Dashboard', icon: 'tachometer-alt', to: '/admin-dashboard' },
+                { name: 'Manage Users', icon: 'users-cog', to: '/manage-users' },
+                { name: 'Reports', icon: 'file-alt', to: '/reports' },
+            ]);
             setUsername(role);
         } else {
             setMenuItems([
-                { name: 'User Dashboard', icon: 'tachometer-alt' },
-                { name: 'Clients', icon: 'user' },
-                { name: 'Supplies', icon: 'suitcase-medical' },
-                { name: 'Treatment Record', icon: 'notes-medical' },
+                { name: 'Dashboard', icon: 'tachometer-alt', to: '/user-dashboard' },
+                { name: 'Clients', icon: 'user', to: '/clients' },
+                { name: 'Supplies', icon: 'suitcase-medical', to: '/supplies' },
+                { name: 'Treatment Record', icon: 'notes-medical', to: '/treatment-record' },
                 { 
                     name: 'Reports', 
                     icon: 'file-alt',
@@ -27,12 +26,13 @@ export function useDashboardData(role) {
                       { name: 'Supplies Report', to: '/reports/supplies-report' },
                       { name: 'Inventory Report', to: '/reports/inventory-report' },
                     ]
-                  },
-              ]);
+                },
+            ]);
             setUsername(role);
         }
     }, [role]);
 
     return { menuItems, username };
 }
+
 export default useDashboardData;

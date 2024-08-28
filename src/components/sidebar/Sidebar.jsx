@@ -1,9 +1,8 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Nav } from 'react-bootstrap';
-import { Link, useLocation  } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
-
-const Sidebar = ({menuItems, username }) => {
+const Sidebar = ({ menuItems, username }) => {
   const [expandedIndex, setExpandedIndex] = useState(null);
   const location = useLocation();
 
@@ -22,15 +21,16 @@ const Sidebar = ({menuItems, username }) => {
   };
 
   return (
-    <div className="text-white vh-100 p-3 position-fixed top-0 start-0 " style={{ marginTop: '56px', width: '250px', background:'#FAFAFA', borderRight:'3px solid #263f73 '}}>
+    <div className="text-white vh-100 p-3 position-fixed top-0 start-0" style={{ width: '250px', background:'#FAFAFA'}}>
       <Nav className="flex-column">
-        <p> Welcome, {username}</p>
+        <p  style={{ color: '#263f73' }}>Welcome, {username}</p>
+        <hr className='text-dark'/>
         {menuItems.map((item, index) => (
           <div key={index}>
             <Nav.Link
               as={Link}
-              to={item.subMenu ? '#' : `/${item.name.toLowerCase().replace(/\s+/g, '-')}`}
-              style={{color:'#263f73'}}
+              to={item.subMenu ? '#' : item.to}
+              style={{ color: '#263f73' }}
               onClick={(event) => handleClick(item, index, event)}
             >
               <i className={`fas fa-${item.icon}`} style={{ marginRight: '8px' }}></i>
@@ -43,7 +43,7 @@ const Sidebar = ({menuItems, username }) => {
                     key={subIndex}
                     as={Link}
                     to={subItem.to}
-                    style={{color:'#263f73'}}
+                    style={{ color: '#263f73' }}
                   >
                     {subItem.name}
                   </Nav.Link>
@@ -54,7 +54,7 @@ const Sidebar = ({menuItems, username }) => {
         ))}
       </Nav>
     </div>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;

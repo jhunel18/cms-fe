@@ -11,7 +11,7 @@ const Header = ({username}) => {
     navigate('/'); // Redirect to the login page after logout
   };
   return (
-      <Navbar variant="dark" expand="lg" className="px-4 fixed-top" style={{background:'#263f73'}}>
+      <Navbar variant="dark" expand="lg" className="px-4 fixed-top" style={{marginLeft:'250px', background:'#263f73'}}>
       <Navbar.Brand href="#"> <i className="fas fa-stethoscope"></i> Clinic Management System</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse className="justify-content-end">
