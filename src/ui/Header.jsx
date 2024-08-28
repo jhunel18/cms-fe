@@ -1,19 +1,22 @@
-import React from 'react'
+import React from 'react';
 import { Navbar, Dropdown, NavLink } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { AuthenticationService } from '../services/AuthenticationService';
-const Header = ({username}) => {
 
+const Header = ({ username, toggleSidebar }) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
     AuthenticationService.logout();
     navigate('/'); // Redirect to the login page after logout
   };
+
   return (
-      <Navbar variant="dark" expand="lg" className="px-4 fixed-top" style={{marginLeft:'250px', background:'#263f73'}}>
-      <Navbar.Brand href="#"> <i className="fas fa-stethoscope"></i> Clinic Management System</Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+    <Navbar variant="dark" expand="lg" className="px-4 fixed-top" style={{ marginLeft: '250px', background: '#263f73' }}>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={toggleSidebar} />
+      <Navbar.Brand href="#">
+        <i className="fas fa-stethoscope"></i> Clinic Management System
+      </Navbar.Brand>
       <Navbar.Collapse className="justify-content-end">
         <Dropdown align="end">
           <Dropdown.Toggle as={NavLink} style={{ color: 'white' }}>
@@ -28,7 +31,7 @@ const Header = ({username}) => {
         </Dropdown>
       </Navbar.Collapse>
     </Navbar>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
