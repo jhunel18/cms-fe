@@ -23,6 +23,7 @@ const Sidebar = ({ menuItems, username }) => {
   return (
     <div className="text-white vh-100 p-3 position-fixed top-0 start-0" style={{ width: '250px', background:'#FAFAFA'}}>
       <Nav className="flex-column">
+        <i className="fas fa-stethoscope" style={{color:'#263f73'}}></i>
         <p  style={{ color: '#263f73' }}>Welcome, {username}</p>
         <hr className='text-dark'/>
         {menuItems.map((item, index) => (
