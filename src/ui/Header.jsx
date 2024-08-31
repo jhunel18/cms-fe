@@ -17,7 +17,7 @@
         expand="lg" 
         className="px-4" 
         style={{ 
-          background: '#263f73',
+          background: '#1d2634',
           marginLeft: isSidebarOpen ? '250px' : '0',
           width: isSidebarOpen ? 'calc(100% - 250px)' : '100%',
           transition: 'margin-left 0.3s ease-in-out, width 0.3s ease-in-out',

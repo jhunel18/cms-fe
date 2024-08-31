@@ -1,14 +1,14 @@
 /* styles.css */
-.sidebar-item {
-    color: #263f73;
+.sidebar-item  {
+    color: #c2c7d0;
     padding: 10px 15px; /* Optional: Adds padding around the items */
     border-radius: 4px; /* Optional: Adds rounded corners */
-    transition: all 0.1s ease;
+    transition: all 0.3s ease;
   }
   
   .sidebar-item:hover {
-    color: white; /* Change the font color on hover */
-    background-color: #1d2634; /* Change the background color on hover */
+    color: #1d2634; /* Change the font color on hover */
+    background-color: #fff; /* Change the background color on hover */
     text-decoration: none; /* Optional: Remove underline */
   }
   

@@ -26,7 +26,7 @@ const RootLayout = ({ children, menuItems, username }) => {
             className="px-0" 
             style={{ 
               marginLeft: isSidebarOpen ? '250px' : '0',  
-              transition: 'margin-left 0.3s ease-in-out', 
+              transition: 'margin-left 0.2s ease-in-out', 
               width: isSidebarOpen ? 'calc(100% - 250px)' : '100%',
               // paddingLeft: isSidebarOpen ? '20px' : '0',
               // paddingRight: isSidebarOpen ? '20px' : '0',

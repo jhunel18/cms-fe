@@ -26,25 +26,25 @@ const Sidebar = ({ menuItems, username, isSidebarOpen, toggleSidebar }) => {
       className={`text-white vh-100 p-3 position-fixed top-0 start-0 ${isSidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`} 
       style={{ 
         width: '250px',
-        background:'#FAFAFA', 
-        transition: 'transform 0.3s ease-in-out', 
+        background:'#1d2634 ', 
+        transition: 'transform 0.2s ease-in-out', 
         transform: isSidebarOpen ? 'translateX(0)' : 'translateX(-100%)' 
       }}
     >
       <Nav className="flex-column">
       <div 
-        className="text-center d-flex flex-column align-items-center mb-4" 
+        className="text-center d-flex flex-column align-items-center" 
         style={{ height: '100px', justifyContent: 'center' }}
       >
         <i 
           className="fas fa-stethoscope" 
           style={{ 
-            color:'#263f73', 
+            color:'#c2c7d0', 
             fontSize: '48px', /* Increase icon size */
             marginBottom: '10px' /* Optional: Space between icon and text */
           }} 
         ></i>
-        <p style={{ color: '#263f73' }}>Welcome, {username}</p>
+        <p style={{ color: '#c2c7d0'}}>Clinic Inventory System</p>
       </div>
         <hr className='text-dark'/>
         {menuItems.map((item, index) => (
