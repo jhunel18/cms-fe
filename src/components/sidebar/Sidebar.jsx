@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Nav } from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom';
+import './sidebar-style.css'; // Import your CSS file
 
 const Sidebar = ({ menuItems, username, isSidebarOpen, toggleSidebar }) => {
   const [expandedIndex, setExpandedIndex] = useState(null);
@@ -31,15 +32,27 @@ const Sidebar = ({ menuItems, username, isSidebarOpen, toggleSidebar }) => {
       }}
     >
       <Nav className="flex-column">
-        <i className="fas fa-stethoscope" style={{color:'#263f73'}}></i>
+      <div 
+        className="text-center d-flex flex-column align-items-center mb-4" 
+        style={{ height: '100px', justifyContent: 'center' }}
+      >
+        <i 
+          className="fas fa-stethoscope" 
+          style={{ 
+            color:'#263f73', 
+            fontSize: '48px', /* Increase icon size */
+            marginBottom: '10px' /* Optional: Space between icon and text */
+          }} 
+        ></i>
         <p style={{ color: '#263f73' }}>Welcome, {username}</p>
+      </div>
         <hr className='text-dark'/>
         {menuItems.map((item, index) => (
           <div key={index}>
             <Nav.Link
               as={Link}
               to={item.subMenu ? '#' : item.to}
-              style={{ color: '#263f73' }}
+              className="sidebar-item" // Apply the class here
               onClick={(event) => handleClick(item, index, event)}
             >
               <i className={`fas fa-${item.icon}`} style={{ marginRight: '8px' }}></i>
@@ -52,7 +65,7 @@ const Sidebar = ({ menuItems, username, isSidebarOpen, toggleSidebar }) => {
                     key={subIndex}
                     as={Link}
                     to={subItem.to}
-                    style={{ color: '#263f73' }}
+                    className="sidebar-item" // Apply the class here
                   >
                     {subItem.name}
                   </Nav.Link>
@@ -63,6 +76,7 @@ const Sidebar = ({ menuItems, username, isSidebarOpen, toggleSidebar }) => {
         ))}
       </Nav>
       <div className="sidebar-overlay" onClick={toggleSidebar}></div>
+      
     </div>
   );
 };

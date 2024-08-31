@@ -1,0 +1,14 @@
+/* styles.css */
+.sidebar-item {
+    color: #263f73;
+    padding: 10px 15px; /* Optional: Adds padding around the items */
+    border-radius: 4px; /* Optional: Adds rounded corners */
+    transition: all 0.1s ease;
+  }
+  
+  .sidebar-item:hover {
+    color: white; /* Change the font color on hover */
+    background-color: #1d2634; /* Change the background color on hover */
+    text-decoration: none; /* Optional: Remove underline */
+  }
+  
