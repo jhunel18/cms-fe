@@ -12,10 +12,10 @@ const Header = ({ username, toggleSidebar }) => {
   };
 
   return (
-    <Navbar variant="dark" expand="lg" className="px-4 fixed-top" style={{ marginLeft: '250px', background: '#263f73' }}>
+    <Navbar variant="dark" expand="lg" className="px-4 fixed-top" style={{background: '#263f73' }}>
       <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={toggleSidebar} />
-      <Navbar.Brand href="#">
-        <i className="fas fa-stethoscope"></i> Clinic Management System
+      <Navbar.Brand href="#" onClick={toggleSidebar}>
+        <i className="fas fa-list"></i> Home
       </Navbar.Brand>
       <Navbar.Collapse className="justify-content-end">
         <Dropdown align="end">

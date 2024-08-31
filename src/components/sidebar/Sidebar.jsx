@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Nav } from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom';
 
-const Sidebar = ({ menuItems, username, isSidebarOpen, toggleSidebar}) => {
+const Sidebar = ({ menuItems, username, isSidebarOpen, toggleSidebar }) => {
   const [expandedIndex, setExpandedIndex] = useState(null);
   const location = useLocation();
 
@@ -21,7 +21,16 @@ const Sidebar = ({ menuItems, username, isSidebarOpen, toggleSidebar}) => {
   };
 
   return (
-    <div className={`text-white vh-100 p-3 position-fixed top-0 start-0 ${isSidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`} style={{ width: '250px', background:'#FAFAFA', transition: 'transform 0.3s ease-in-out', transform: isSidebarOpen ? 'translateX(0)' : 'translateX(-100%)' }}>
+    <div 
+      className={`text-white vh-100 p-3 position-fixed top-0 start-0 ${isSidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`} 
+      style={{ 
+        width: '250px',
+        marginTop:'56px', 
+        background:'#FAFAFA', 
+        transition: 'transform 0.3s ease-in-out', 
+        transform: isSidebarOpen ? 'translateX(0)' : 'translateX(-100%)' 
+      }}
+    >
       <Nav className="flex-column">
         <i className="fas fa-stethoscope" style={{color:'#263f73'}}></i>
         <p style={{ color: '#263f73' }}>Welcome, {username}</p>
