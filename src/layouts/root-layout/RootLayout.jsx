@@ -14,6 +14,7 @@ const RootLayout = ({ children, menuItems, username }) => {
     <div>
       
       <Container fluid>
+        
         <Row>
           <Sidebar 
             menuItems={menuItems} 
@@ -22,14 +23,13 @@ const RootLayout = ({ children, menuItems, username }) => {
             toggleSidebar={toggleSidebar} 
           />
           <Col 
-            className="pt-3" 
+            className="px-0" 
             style={{ 
-              marginLeft: isSidebarOpen ? '250px' : '0', 
-              marginTop: '56px', 
+              marginLeft: isSidebarOpen ? '250px' : '0',  
               transition: 'margin-left 0.3s ease-in-out', 
               width: isSidebarOpen ? 'calc(100% - 250px)' : '100%',
-              paddingLeft: isSidebarOpen ? '20px' : '0',
-              paddingRight: isSidebarOpen ? '20px' : '0'
+              // paddingLeft: isSidebarOpen ? '20px' : '0',
+              // paddingRight: isSidebarOpen ? '20px' : '0',
             }}
           >
             <Header username={username} toggleSidebar={toggleSidebar} />
