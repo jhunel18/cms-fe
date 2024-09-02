@@ -1,6 +1,7 @@
 import React from "react";
-import { Button, Card } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import './custom-card-style.css'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const CustomCard = ({ title, icon, content, type }) => {
   const cardStyles = {
@@ -31,16 +32,7 @@ const CustomCard = ({ title, icon, content, type }) => {
     <Card className="custom-card" style= {selectedStyle}>
       <Card.Body>
         <div className="d-flex justify-content-end">
-        <i
-              className={`fas fa-${icon}`}
-              style={{
-                color: "",
-                fontSize: "36px" /* Increase icon size */,
-                marginBottom:
-                  "10px" /* Optional: Space between icon and text */,
-              }}
-            ></i>
-         
+        <FontAwesomeIcon icon={icon} className="icon-style"/>
         </div>
         <div>
         <Card.Title style={{fontSize:'30px'}}>{title}</Card.Title>

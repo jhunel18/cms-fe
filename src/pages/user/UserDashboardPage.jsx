@@ -4,6 +4,7 @@ import { getUserRole } from "../../utils/TokenHelpers";
 import { useDashboardData } from "../../hooks/UseDashboard";
 import CustomCard from "../../components/card/CustomCard";
 import { Table } from 'react-bootstrap';
+import { faCheckCircle, faMedkit, faUserFriends } from "@fortawesome/free-solid-svg-icons";
 
 
 const UserDashboardPage = () => {
@@ -15,12 +16,12 @@ const UserDashboardPage = () => {
       <div
         className="d-flex justify-content-center custom-wrapper"
       >
-        <CustomCard title={"50"} content={"Stocks"} icon="check" type = "success"/>
-        <CustomCard title={"50"} content={"Clients"} icon="users" type = "primary"/>
+        <CustomCard title={"50"} content={"Stocks"} icon={faCheckCircle} type = "success"/>
+        <CustomCard title={"50"} content={"Clients"} icon={faUserFriends} type = "primary"/>
         <CustomCard
           title={"50"}
           content={"Critical Items"}
-          icon="notes-medical"
+          icon={faMedkit}
           type = "danger"
         />
       </div>
