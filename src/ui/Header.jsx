@@ -3,7 +3,8 @@ import { Navbar, Dropdown, NavLink } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { AuthenticationService } from "../services/AuthenticationService";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSignOut } from "@fortawesome/free-solid-svg-icons";
+import { faListCheck, faListDots, faSignOut } from "@fortawesome/free-solid-svg-icons";
+import { faList } from "@fortawesome/free-solid-svg-icons/faList";
 
 const Header = ({ username, toggleSidebar, isSidebarOpen }) => {
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ const Header = ({ username, toggleSidebar, isSidebarOpen }) => {
     >
       {/* <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={toggleSidebar} /> */}
       <Navbar.Brand href="#" onClick={toggleSidebar}>
-        <i className="fas fa-list"></i> Clinic Inventory Management System
+        <FontAwesomeIcon icon = {faListDots}/> Clinic Inventory Management System
       </Navbar.Brand>
       <Navbar.Collapse className="justify-content-end">
         <NavLink
