@@ -15,7 +15,7 @@
       <Navbar 
         variant="dark" 
         expand="lg" 
-        className="px-4" 
+        className="px-4 fixed-top" 
         style={{ 
           background: '#1d2634',
           marginLeft: isSidebarOpen ? '250px' : '0',

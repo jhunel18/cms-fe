@@ -12,7 +12,7 @@ const UserDashboardPage = () => {
       <h3>User Dashboard</h3>
       {/* <h2>User, {username}</h2> */}
       <div
-        className="d-flex justify-content-center"
+        className="d-flex justify-content-center wrapper"
         style={{
           background: "#fff",
           padding: "20px",
