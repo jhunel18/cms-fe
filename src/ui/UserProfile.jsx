@@ -1,50 +1,32 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCommentAlt, faUser, faEnvelope, faUserDoctor } from '@fortawesome/free-solid-svg-icons';
 
-const UserProfile = (user) => {
+const UserProfile = (    ) => {
   return (
     <Container>
       <Row className="align-items-center">
+        
         <Col xs={4}>
-        <i 
-          className="fas fa-user-md" 
-          roundedCircle
-          style={{ 
-            color:'#c2c7d0', 
-            fontSize: '46px', /* Increase icon size */
-          }} 
-        ></i>
+        <FontAwesomeIcon icon={faUserDoctor} style = {{ color:'#c2c7d0', 
+            fontSize: '46px', /* Increase icon size */}}/>
           {/* <Image src="/w3images/avatar2.png" roundedCircle style={{ width: '46px' }} /> */}
         </Col>
         <Col xs={8} className="d-flex align-items-center">
           <div>
-            <span>Welcome, <strong>Mike</strong></span><br />
+            <span>Welcome, <strong>User</strong></span><br />
             <Button variant="link" className="p-1">
-            <i
-              className={`fas fa-envelope`}
-              style={{
-                color: "#fff",
-                fontSize: "18px" /* Increase icon size */,
-              }}
-            ></i>
+            <FontAwesomeIcon icon={faEnvelope} style = {{ color:'#c2c7d0', 
+            fontSize: '18px', /* Increase icon size */}}/>
             </Button>
             <Button variant="link" className="p-1">
-            <i
-              className={`fas fa-comment`}
-              style={{
-                color: "#fff",
-                fontSize: "18px" /* Increase icon size */,
-              }}
-            ></i>
+            <FontAwesomeIcon icon={faCommentAlt} style = {{ color:'#c2c7d0', 
+            fontSize: '18px', /* Increase icon size */}}/>
             </Button>
             <Button variant="link" className="p-1">
-            <i
-              className={`fas fa-user`}
-              style={{
-                color: "#fff",
-                fontSize: "18px" /* Increase icon size */,
-              }}
-            ></i>
+            <FontAwesomeIcon icon={faUser} style = {{ color:'#c2c7d0', 
+            fontSize: '18px', /* Increase icon size */}}/>
             </Button>
           </div>
         </Col>
