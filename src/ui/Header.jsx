@@ -2,6 +2,8 @@ import React from "react";
 import { Navbar, Dropdown, NavLink } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { AuthenticationService } from "../services/AuthenticationService";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSignOut } from "@fortawesome/free-solid-svg-icons";
 
 const Header = ({ username, toggleSidebar, isSidebarOpen }) => {
   const navigate = useNavigate();
@@ -38,13 +40,10 @@ const Header = ({ username, toggleSidebar, isSidebarOpen }) => {
             alignItems: 'center', // Center icon vertically
           }}
         >
-          <i
-            className={`fas fa-sign-out`}
-            style={{
+          <FontAwesomeIcon icon={faSignOut} style={{
               color: "#000",
               fontSize: "24px" /* Increase icon size */,
-            }}
-          ></i>
+            }}/>
         </NavLink>
         {/* <Dropdown align="end">
             <Dropdown.Toggle as={NavLink} style={{ color: 'white' }}>

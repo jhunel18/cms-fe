@@ -7,9 +7,8 @@ const UserProfile = (    ) => {
   return (
     <Container>
       <Row className="align-items-center">
-        
         <Col xs={4}>
-        <FontAwesomeIcon icon={faUserDoctor} style = {{ color:'#c2c7d0', 
+        <FontAwesomeIcon icon={faUserDoctor} style = {{ color:'#fff', 
             fontSize: '46px', /* Increase icon size */}}/>
           {/* <Image src="/w3images/avatar2.png" roundedCircle style={{ width: '46px' }} /> */}
         </Col>
@@ -17,15 +16,15 @@ const UserProfile = (    ) => {
           <div>
             <span>Welcome, <strong>User</strong></span><br />
             <Button variant="link" className="p-1">
-            <FontAwesomeIcon icon={faEnvelope} style = {{ color:'#c2c7d0', 
+            <FontAwesomeIcon icon={faEnvelope} style = {{ color:'#fff', 
             fontSize: '18px', /* Increase icon size */}}/>
             </Button>
             <Button variant="link" className="p-1">
-            <FontAwesomeIcon icon={faCommentAlt} style = {{ color:'#c2c7d0', 
+            <FontAwesomeIcon icon={faCommentAlt} style = {{ color:'#fff', 
             fontSize: '18px', /* Increase icon size */}}/>
             </Button>
             <Button variant="link" className="p-1">
-            <FontAwesomeIcon icon={faUser} style = {{ color:'#c2c7d0', 
+            <FontAwesomeIcon icon={faUser} style = {{ color:'#fff', 
             fontSize: '18px', /* Increase icon size */}}/>
             </Button>
           </div>
