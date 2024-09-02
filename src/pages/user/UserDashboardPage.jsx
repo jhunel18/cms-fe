@@ -12,15 +12,7 @@ const UserDashboardPage = () => {
       <h3>User Dashboard</h3>
       {/* <h2>User, {username}</h2> */}
       <div
-        className="d-flex justify-content-center wrapper"
-        style={{
-          background: "#fff",
-          padding: "20px",
-          margin: "20px",
-          boxShadow:'2px',
-          borderRadius:'10px',
-          boxShadow:'0px 0px 6px rgba(0, 0, 0, 0.5)'
-        }}
+        className="d-flex justify-content-center custom-wrapper"
       >
         <CustomCard title={"50"} content={"Stocks"} icon="check" type = "success"/>
         <CustomCard title={"50"} content={"Clients"} icon="users" type = "primary"/>
@@ -31,7 +23,7 @@ const UserDashboardPage = () => {
           type = "danger"
         />
       </div>
-      <div>
+      <div className="custom-wrapper">
         <h3>Recent Clients</h3>
         <Table striped bordered hover>
       <thead>
