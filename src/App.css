@@ -1,5 +1,5 @@
 html body {
-    background-color: #FAFAFA !important; /* Use !important to ensure it overrides Bootstrap styles */
+    background-color: #f1f1f1  !important; /* Use !important to ensure it overrides Bootstrap styles */
     margin : 0 !important;
     padding :0 !important;
     color : #343a40 !important;

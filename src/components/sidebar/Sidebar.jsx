@@ -3,6 +3,7 @@ import { Nav } from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom';
 import SidebarAccountDropdown from '../../ui/SidebarAccountDropdown'
 import './sidebar-style.css'; // Import your CSS file
+import UserProfile from '../../ui/UserProfile';
 
 const Sidebar = ({ menuItems, username, isSidebarOpen, toggleSidebar }) => {
   const [expandedIndex, setExpandedIndex] = useState(null);
@@ -34,21 +35,9 @@ const Sidebar = ({ menuItems, username, isSidebarOpen, toggleSidebar }) => {
       }}
     >
       <Nav className="flex-column">
-      <div 
-        className="text-center d-flex flex-column align-items-center" 
-        style={{ height: '100px', justifyContent: 'center' }}
-      >
-        <i 
-          className="fas fa-user-md" 
-          style={{ 
-            color:'#c2c7d0', 
-            fontSize: '60px', /* Increase icon size */
-            marginBottom: '10px' /* Optional: Space between icon and text */
-          }} 
-        ></i>
-        <p style={{ color: '#c2c7d0'}}>Clinic Inventory System</p>
-      </div>
-        <hr className='text-dark'/>
+        <div>
+          <UserProfile />
+        </div>
         {menuItems.map((item, index) => (
           <div key={index}>
             <Nav.Link
