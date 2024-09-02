@@ -2,6 +2,6 @@ html body {
     background-color: #FAFAFA !important; /* Use !important to ensure it overrides Bootstrap styles */
     margin : 0 !important;
     padding :0 !important;
-    color : #9e9ea4 !important;
-    font-family: 'Montserrat', sans-serif !important;
+    color : #343a40 !important;
+    font-family: 'Tahoma', sans-serif !important;
 }

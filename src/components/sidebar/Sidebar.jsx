@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Nav } from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom';
+import SidebarAccountDropdown from '../../ui/SidebarAccountDropdown'
 import './sidebar-style.css'; // Import your CSS file
 
 const Sidebar = ({ menuItems, username, isSidebarOpen, toggleSidebar }) => {
@@ -37,10 +38,10 @@ const Sidebar = ({ menuItems, username, isSidebarOpen, toggleSidebar }) => {
         style={{ height: '100px', justifyContent: 'center' }}
       >
         <i 
-          className="fas fa-stethoscope" 
+          className="fas fa-user-md" 
           style={{ 
             color:'#c2c7d0', 
-            fontSize: '48px', /* Increase icon size */
+            fontSize: '60px', /* Increase icon size */
             marginBottom: '10px' /* Optional: Space between icon and text */
           }} 
         ></i>
@@ -76,7 +77,7 @@ const Sidebar = ({ menuItems, username, isSidebarOpen, toggleSidebar }) => {
         ))}
       </Nav>
       <div className="sidebar-overlay" onClick={toggleSidebar}></div>
-      
+      {/* <SidebarAccountDropdown /> */}
     </div>
   );
 };
