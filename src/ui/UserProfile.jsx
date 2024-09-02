@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Image, Button } from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 
 const UserProfile = (user) => {
   return (
@@ -24,7 +24,7 @@ const UserProfile = (user) => {
               className={`fas fa-envelope`}
               style={{
                 color: "#fff",
-                fontSize: "24px" /* Increase icon size */,
+                fontSize: "18px" /* Increase icon size */,
               }}
             ></i>
             </Button>
@@ -33,7 +33,7 @@ const UserProfile = (user) => {
               className={`fas fa-comment`}
               style={{
                 color: "#fff",
-                fontSize: "24px" /* Increase icon size */,
+                fontSize: "18px" /* Increase icon size */,
               }}
             ></i>
             </Button>
@@ -42,7 +42,7 @@ const UserProfile = (user) => {
               className={`fas fa-user`}
               style={{
                 color: "#fff",
-                fontSize: "24px" /* Increase icon size */,
+                fontSize: "18px" /* Increase icon size */,
               }}
             ></i>
             </Button>
