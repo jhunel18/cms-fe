@@ -12,8 +12,8 @@ const CustomModal = ({ show, handleClose, title, children }) => {
         {children}
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
-          Add
+        <Button variant="primary" onClick={handleClose}>
+          Save
         </Button>
       </Modal.Footer>
     </Modal>

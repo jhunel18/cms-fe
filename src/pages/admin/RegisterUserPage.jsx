@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import CustomModal from '../../components/modal/CustomModal'
 import Register from '../../components/register/Register';
+import AddUser from '../../components/register/AddUser';
 
 const RegisterUserPage = () => {
   const { menuItems, username } = useDashboardData(getUserRole());
@@ -66,7 +67,7 @@ const RegisterUserPage = () => {
             handleClose={handleClose}
             title="Add New User"
           >
-            {/* <Register /> */}
+            <AddUser />
           </CustomModal>
 
         </div>
