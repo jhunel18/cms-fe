@@ -67,7 +67,7 @@ const Sidebar = ({ menuItems, username, isSidebarOpen, toggleSidebar }) => {
         ))}
       </Nav>
       <div className="sidebar-overlay" onClick={toggleSidebar}></div>
-      {/* <SidebarAccountDropdown /> */}
+      <SidebarAccountDropdown />
     </div>
   );
 };
