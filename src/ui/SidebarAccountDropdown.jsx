@@ -17,7 +17,7 @@ const SidebarAccountDropdown = ({username}) => {
     <Button variant='light'  onClick={handleLogout}
           style={{
             background: '#fff',
-            padding: '8px 12px', // Correct padding syntax
+            padding: '8px 18px', // Correct padding syntax
             borderRadius: '8px',
             display: 'flex', // Center icon within button
             alignItems: 'center', // Center icon vertically
