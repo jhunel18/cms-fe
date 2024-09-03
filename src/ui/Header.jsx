@@ -25,9 +25,38 @@ const Header = ({ username, toggleSidebar, isSidebarOpen }) => {
         transition: "margin-left 0.3s ease-in-out, width 0.3s ease-in-out",
       }}
     >
+      {/* <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={toggleSidebar} /> */}
       <Navbar.Brand href="#" onClick={toggleSidebar}>
         <FontAwesomeIcon icon = {faListDots}/> Clinic Inventory Management System
       </Navbar.Brand>
+      <Navbar.Collapse className="justify-content-end">
+        <NavLink
+          onClick={handleLogout}
+          style={{
+            background: '#fff',
+            padding: '6px 16px', // Correct padding syntax
+            borderRadius: '8px',
+            display: 'flex', // Center icon within button
+            alignItems: 'center', // Center icon vertically
+          }}
+        >
+          <FontAwesomeIcon icon={faSignOut} style={{
+              color: "#000",
+              fontSize: "24px" /* Increase icon size */,
+            }}/>
+        </NavLink>
+        {/* <Dropdown align="end">
+            <Dropdown.Toggle as={NavLink} style={{ color: 'white' }}>
+              Welcome, {username}
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              <Dropdown.Item href="#profile">Profile</Dropdown.Item>
+              <Dropdown.Item href="#settings">Settings</Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown> */}
+      </Navbar.Collapse>
     </Navbar>
   );
 };

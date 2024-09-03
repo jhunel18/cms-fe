@@ -13,15 +13,15 @@ const SidebarAccountDropdown = ({username}) => {
       navigate('/'); // Redirect to the login page after logout
     };
   return (
-    <div className="mt-auto">
+    <div className="mt-auto " style={{paddingTop:'100px', paddingLeft:'25px'}}>
     <Button variant='light'  onClick={handleLogout}
           style={{
             background: '#fff',
-            padding: '8px 18px', // Correct padding syntax
+            padding: '8px 32px', // Correct padding syntax
             borderRadius: '8px',
             display: 'flex', // Center icon within button
             alignItems: 'center', // Center icon vertically
-          }}>
+          }}> Sign Out
      <FontAwesomeIcon icon={faSignOut} style={{
               color: "#000",
               fontSize: "24px" /* Increase icon size */,

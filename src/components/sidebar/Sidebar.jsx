@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Nav } from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom';
-import SidebarAccountDropdown from '../../ui/SidebarAccountDropdown'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import SidebarAccountDropdown from '../../ui/SidebarAccountDropdown';
 import './sidebar-style.css'; // Import your CSS file
 import UserProfile from '../../ui/UserProfile';
 
@@ -46,7 +47,7 @@ const Sidebar = ({ menuItems, username, isSidebarOpen, toggleSidebar }) => {
               className="sidebar-item" // Apply the class here
               onClick={(event) => handleClick(item, index, event)}
             >
-              <i className={`fas fa-${item.icon}`} style={{ marginRight: '8px' }}></i>
+              <FontAwesomeIcon icon={item.icon} style={{ marginRight: '8px' }} />
               {item.name}
             </Nav.Link>
             {item.subMenu && expandedIndex === index && (
@@ -66,8 +67,6 @@ const Sidebar = ({ menuItems, username, isSidebarOpen, toggleSidebar }) => {
           </div>
         ))}
       </Nav>
-      <div className="sidebar-overlay" onClick={toggleSidebar}></div>
-      <SidebarAccountDropdown />
     </div>
   );
 };
