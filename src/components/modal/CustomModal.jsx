@@ -11,11 +11,11 @@ const CustomModal = ({ show, handleClose, title, children }) => {
       <Modal.Body>
         {children}
       </Modal.Body>
-      <Modal.Footer>
+      {/* <Modal.Footer>
         <Button variant="primary" onClick={handleClose}>
           Save
         </Button>
-      </Modal.Footer>
+      </Modal.Footer> */}
     </Modal>
   );
 };

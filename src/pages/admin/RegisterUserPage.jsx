@@ -72,7 +72,7 @@ const RegisterUserPage = () => {
             handleClose={handleClose}
             title="Add New User"
           >
-            <AddUser />
+            <AddUser onClose={handleClose}/>
           </CustomModal>
 
         </div>
