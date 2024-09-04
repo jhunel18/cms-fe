@@ -12,9 +12,18 @@ const AddUser = () => {
           </Form.Group>
         </Col>
         <Col md={6}>
-          <Form.Group controlId="formLastName">
+          <Form.Group controlId="formMiddleName">
             <Form.Label>Last Name</Form.Label>
-            <Form.Control type="text" placeholder="Enter last name" />
+            <Form.Control type="text" placeholder="Enter middle name" />
+          </Form.Group>
+        </Col>
+        
+      </Row>
+      <Row className="mb-3">
+        <Col md={12}>
+          <Form.Group controlId="formLastName">
+            <Form.Label> Last Name</Form.Label>
+            <Form.Control type="text" placeholder="Enter first name" />
           </Form.Group>
         </Col>
       </Row>
@@ -38,15 +47,11 @@ const AddUser = () => {
         <Form.Label>Branch</Form.Label>
         <Form.Control as="select">
           <option>Select Branch</option>
-          <option>Branch 1</option>
-          <option>Branch 2</option>
-          <option>Branch 3</option>
+          <option>PUP_UQ</option>
+          <option>PUP_QC</option>
+          <option>PUP_CM</option>
         </Form.Control>
       </Form.Group>
-
-      {/* <Button variant="primary" type="submit">
-        Add User
-      </Button> */}
     </Form>
   );
 };

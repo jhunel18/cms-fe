@@ -6,15 +6,24 @@ import useDashboardData from '../../hooks/UseDashboard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import CustomModal from '../../components/modal/CustomModal'
-import Register from '../../components/register/Register';
 import AddUser from '../../components/register/AddUser';
+import useFetchData from '../../hooks/UseFetchData';
+import { AdminService } from '../../services/AdminService';
 
 const RegisterUserPage = () => {
   const { menuItems, username } = useDashboardData(getUserRole());
   const [showModal, setShowModal] = useState(false);
 
+
+   // Use the custom hook to fetch users
+  // Use the custom hook with AdminService.getAllUsers
+  const { data: users, error, loading } = useFetchData(AdminService.getAllUsers, []);
+
   const handleShow = () => setShowModal(true);
   const handleClose = () => setShowModal(false);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
 
   return (
     <div>
@@ -36,29 +45,25 @@ const RegisterUserPage = () => {
               <tr>
                 <th>#</th>
                 <th>First Name</th>
+                <th>Middle Name</th>
                 <th>Last Name</th>
-                <th>Username</th>
+                <th>Branch</th>
+                <th>Email</th>
+                <th>Role</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td colSpan={2}>Larry the Bird</td>
-                <td>@twitter</td>
-              </tr>
-              {/* More rows can be added here */}
+              {users.map((user, index) => (
+                <tr key={user.id}>
+                  <td>{index + 1}</td>
+                  <td>{user.fname}</td>
+                  <td>{user.mname}</td>
+                  <td>{user.lname}</td>
+                  <td>{user.branch}</td>
+                  <td>{user.email}</td>
+                  <td>{user.role}</td>
+                </tr>
+              ))}
             </tbody>
           </Table>
 
