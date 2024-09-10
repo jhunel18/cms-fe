@@ -4,11 +4,12 @@ import { getUserRole } from '../../utils/TokenHelpers';
 import { Table, Button, Row, Col } from 'react-bootstrap';
 import useDashboardData from '../../hooks/UseDashboard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faAdd, faPencilSquare, faPlus, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import CustomModal from '../../components/modal/CustomModal'
 import AddUser from '../../components/register/AddUser';
 import useFetchData from '../../hooks/UseFetchData';
 import { AdminService } from '../../services/AdminService';
+import { faEraser } from '@fortawesome/free-solid-svg-icons/faEraser';
 
 const RegisterUserPage = () => {
   const { menuItems, username } = useDashboardData(getUserRole());
@@ -35,7 +36,7 @@ const RegisterUserPage = () => {
             </Col>
             <Col className="text-end">
               <Button variant='success' onClick={handleShow}>
-                <FontAwesomeIcon icon={faPlus} /> Add User
+                <FontAwesomeIcon icon={faPlusCircle} /> Add
               </Button>
             </Col>
           </Row>
@@ -50,6 +51,7 @@ const RegisterUserPage = () => {
                 <th>Branch</th>
                 <th>Email</th>
                 <th>Role</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -62,6 +64,7 @@ const RegisterUserPage = () => {
                   <td>{user.branch}</td>
                   <td>{user.email}</td>
                   <td>{user.role}</td>
+                  <td><Button><FontAwesomeIcon icon={faPencilSquare} /></Button> <Button variant='danger'><FontAwesomeIcon icon={faEraser} /></Button></td>
                 </tr>
               ))}
             </tbody>
