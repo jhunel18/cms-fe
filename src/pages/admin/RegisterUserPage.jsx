@@ -1,27 +1,57 @@
 import React, { useState } from 'react';
 import RootLayout from '../../layouts/root-layout/RootLayout';
 import { getUserRole } from '../../utils/TokenHelpers';
-import { Table, Button, Row, Col } from 'react-bootstrap';
+import { Button, Row, Col } from 'react-bootstrap';
 import useDashboardData from '../../hooks/UseDashboard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAdd, faPencilSquare, faPlus, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import CustomModal from '../../components/modal/CustomModal'
 import AddUser from '../../components/register/AddUser';
 import useFetchData from '../../hooks/UseFetchData';
 import { AdminService } from '../../services/AdminService';
-import { faEraser } from '@fortawesome/free-solid-svg-icons/faEraser';
+import UsersTable from '../../components/tables/UsersTable';
 
 const RegisterUserPage = () => {
   const { menuItems, username } = useDashboardData(getUserRole());
   const [showModal, setShowModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false); // State to control delete confirmation modal
+  const [selectedUser, setSelectedUser] = useState(null); // Store the user to delete
 
 
    // Use the custom hook to fetch users
   // Use the custom hook with AdminService.getAllUsers
-  const { data: users, error, loading } = useFetchData(AdminService.getAllUsers, []);
+  const { data: users, error, loading, refetch } = useFetchData(AdminService.getAllUsers, []);
 
   const handleShow = () => setShowModal(true);
   const handleClose = () => setShowModal(false);
+
+  //Delete user
+  const handleDelete = (userId) => {
+    AdminService.deleteUser(userId)
+    .then(() => {
+      refetch(); // Re-fetch the users after deletion
+      setShowDeleteModal(false); // Close the delete confirmation modal
+    })
+    .catch((error) => {
+      console.error('Error deleting user:', error);
+      // Optionally handle the error
+    });
+  };
+
+  const handleDeleteClick = (user) => {
+    setSelectedUser(user); // Store the selected user
+    setShowDeleteModal(true); // Show delete confirmation modal
+  };
+
+  const handleDeleteClose = () => {
+    setSelectedUser(null);
+    setShowDeleteModal(false);
+  };
+
+  const handleAddUserSuccess = () => {
+    setShowModal(false); // Close the modal
+    refetch(); // Re-fetch the users after adding a new user
+  };
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
@@ -40,42 +70,24 @@ const RegisterUserPage = () => {
               </Button>
             </Col>
           </Row>
-
-          <Table striped bordered hover>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Middle Name</th>
-                <th>Last Name</th>
-                <th>Branch</th>
-                <th>Email</th>
-                <th>Role</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {users.map((user, index) => (
-                <tr key={user.id}>
-                  <td>{index + 1}</td>
-                  <td>{user.fname}</td>
-                  <td>{user.mname}</td>
-                  <td>{user.lname}</td>
-                  <td>{user.branch}</td>
-                  <td>{user.email}</td>
-                  <td>{user.role}</td>
-                  <td><Button><FontAwesomeIcon icon={faPencilSquare} /></Button> <Button variant='danger'><FontAwesomeIcon icon={faEraser} /></Button></td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
+          <UsersTable users={users} handleDeleteClick={handleDeleteClick} />
 
           <CustomModal
             show={showModal}
             handleClose={handleClose}
             title="Add New User"
           >
-            <AddUser onClose={handleClose}/>
+            <AddUser onSuccess={handleAddUserSuccess} onClose={handleClose}/>
+          </CustomModal>
+
+          <CustomModal
+            show={showDeleteModal}
+            handleClose={handleDeleteClose}
+            title="Confirm Delete"
+          >
+            <p>Are you sure you want to delete {selectedUser?.fname}?</p>
+            <Button variant="danger" onClick={() => handleDelete(selectedUser?.id)}>Yes, Delete</Button>{' '}
+            <Button variant="secondary" onClick={handleDeleteClose}>Cancel</Button>
           </CustomModal>
 
         </div>

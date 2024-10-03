@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import { AdminService } from '../../services/AdminService';
 
-const AddUser = ({ onClose }) => {
+const AddUser = ({ onClose, onSuccess }) => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -11,6 +11,7 @@ const AddUser = ({ onClose }) => {
     branch: '',
   });
   const [error, setError] = useState(null);
+  const[loading, setLoading] = useState(false)
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,12 +20,17 @@ const AddUser = ({ onClose }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       await AdminService.register(formData); // Adjust based on your API's expected request body
+      onSuccess(); // Trigger success callback to refetch users
       onClose(); // Close modal on success
     } catch (err) {
       setError(err.message);
     }
+  finally {
+    setLoading(false);
+  }
   };
 
   return (
