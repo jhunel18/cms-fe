@@ -11,8 +11,6 @@ const UserDashboardPage = () => {
   const { menuItems, username } = useDashboardData(getUserRole());
   return (
     <RootLayout menuItems={menuItems} username={username}>
-      <h3>User Dashboard</h3>
-      {/* <h2>User, {username}</h2> */}
       <div
         className="d-flex justify-content-center custom-wrapper"
       >

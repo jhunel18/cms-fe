@@ -6,7 +6,7 @@ import useDashboardData from '../../hooks/UseDashboard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import CustomModal from '../../components/modal/CustomModal'
-import AddUser from '../../components/register/AddUser';
+import AddUser from '../../components/forms/AddUser';
 import useFetchData from '../../hooks/UseFetchData';
 import { AdminService } from '../../services/AdminService';
 import UsersTable from '../../components/tables/UsersTable';

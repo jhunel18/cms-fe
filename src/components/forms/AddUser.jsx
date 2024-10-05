@@ -113,7 +113,7 @@ const AddUser = ({ onClose, onSuccess }) => {
               name="password"
               value={formData.password}
               onChange={handleChange}
-              placeholder="Password"
+              placeholder="Enter Password"
             />
           </Form.Group>
         </Col>

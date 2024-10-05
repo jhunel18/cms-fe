@@ -10,6 +10,7 @@ import ProtectedRoute from './components/protected/ProtectedRoute';
 import NotFoundPage from './pages/shared/NotFoundPage';
 import RegisterUser from './pages/admin/RegisterUserPage'
 import SuppliesPage from './pages/user/SuppliesPage';
+import ClientsPage from './pages/user/ClientsPage';
 
 function App() {
   
@@ -40,6 +41,12 @@ function App() {
           path="/supplies" 
           element={
             <ProtectedRoute component={SuppliesPage} requiredRole="role_user" />
+          } 
+        />
+         <Route 
+          path="/clients" 
+          element={
+            <ProtectedRoute component={ClientsPage} requiredRole="role_user" />
           } 
         />
         
