@@ -6,6 +6,7 @@ const API_URL = 'http://localhost:8080';
 
 export const AdminService = {
   async register(credentials){
+    console.log(credentials)
     try {
       const response = await axios.post(`${API_URL}/api/admin/`, credentials, {
         headers: {

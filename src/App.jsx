@@ -8,9 +8,10 @@ import ForbiddenPage from './pages/shared/ForbiddenPage';
 import {Routes, Route} from 'react-router-dom'
 import ProtectedRoute from './components/protected/ProtectedRoute';
 import NotFoundPage from './pages/shared/NotFoundPage';
-import RegisterUser from './pages/admin/RegisterUserPage'
+import ViewUsers from './pages/admin/ViewUsersPage'
 import SuppliesPage from './pages/user/SuppliesPage';
 import ClientsPage from './pages/user/ClientsPage';
+import AddUsers from './pages/admin/AddUsersPage';
 
 function App() {
   
@@ -26,9 +27,15 @@ function App() {
           } 
         />
          <Route 
-          path="/manage-users" 
+          path="manage-users/add" 
           element={
-            <ProtectedRoute component={RegisterUser} requiredRole="role_admin" />
+            <ProtectedRoute component={AddUsers} requiredRole="role_admin" />
+          } 
+        />
+         <Route 
+          path="manage-users/view" 
+          element={
+            <ProtectedRoute component={ViewUsers} requiredRole="role_admin" />
           } 
         />
         <Route 

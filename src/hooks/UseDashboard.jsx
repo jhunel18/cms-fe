@@ -9,7 +9,15 @@ export function useDashboardData(role) {
         if (role === 'role_admin') {
             setMenuItems([
                 { name: 'Dashboard', icon: faTachometerAlt, to: '/admin-dashboard' },
-                { name: 'Manage Users', icon: faUsersCog, to: '/manage-users' },
+                // { name: 'Manage Users', icon: faUsersCog, to: '/view-users' },
+                {
+                    name: 'Manage Users', 
+                    icon: faFileAlt,
+                    subMenu: [
+                      { name: 'Add User', to: '/manage-users/add' },
+                      { name: 'View Users', to: '/manage-users/view' },
+                    ]
+                },
                 { name: 'Reports', icon: faFileAlt, to: '/reports' },
                 
             ]);
