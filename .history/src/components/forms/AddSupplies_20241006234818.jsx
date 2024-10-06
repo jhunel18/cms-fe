@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import { UserService } from '../../services/UserService'; // Assuming you have this service for handling supplies
-import toast, { Toaster } from 'react-hot-toast';
+
 const AddSupplies = ({ onClose, onSuccess }) => {
   const [formData, setFormData] = useState({
     brandName: '',
@@ -28,23 +28,18 @@ const AddSupplies = ({ onClose, onSuccess }) => {
     setLoading(true);
     try {
       await UserService.addSupply(formData); // Adjust based on your API's expected request body
-      toast.success("Added Successfully!")
       onSuccess(); // Trigger success callback to refresh supplies list
       onClose(); // Close modal on success
     } catch (err) {
       setError(err.message);
-      toast.error("An error occured.")
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <>
-     <Toaster position="top-center" reverseOrder={false} />
-     <h4>Add New Supplies</h4>
-     <hr />
     <Form onSubmit={handleSubmit}>
+      
       <Row className="mb-2">
         <Col md={6}>
           <Form.Group controlId="formBrandName">
@@ -75,7 +70,7 @@ const AddSupplies = ({ onClose, onSuccess }) => {
       </Row>
 
       <Row className="mb-2">
-        <Col md={4}>
+        <Col md={6}>
           <Form.Group controlId="formCategory">
             <Form.Label>Category</Form.Label>
             <Form.Control
@@ -88,7 +83,7 @@ const AddSupplies = ({ onClose, onSuccess }) => {
             />
           </Form.Group>
         </Col>
-        <Col md={4}>
+        <Col md={6}>
           <Form.Group controlId="formDosageForm">
             <Form.Label>Dosage Form</Form.Label>
             <Form.Control
@@ -101,11 +96,14 @@ const AddSupplies = ({ onClose, onSuccess }) => {
             />
           </Form.Group>
         </Col>
-        <Col md={4}>
+      </Row>
+
+      <Row className="mb-2">
+        <Col md={6}>
           <Form.Group controlId="formDosage">
             <Form.Label>Dosage</Form.Label>
             <Form.Control
-              type="number"
+              type="text"
               name="dosage"
               value={formData.dosage}
               onChange={handleChange}
@@ -114,9 +112,6 @@ const AddSupplies = ({ onClose, onSuccess }) => {
             />
           </Form.Group>
         </Col>
-      </Row>
-
-      <Row className="mb-2">
         <Col md={6}>
           <Form.Group controlId="formUnit">
             <Form.Label>Unit</Form.Label>
@@ -130,6 +125,9 @@ const AddSupplies = ({ onClose, onSuccess }) => {
             />
           </Form.Group>
         </Col>
+      </Row>
+
+      <Row className="mb-2">
         <Col md={6}>
           <Form.Group controlId="formQuantity">
             <Form.Label>Quantity</Form.Label>
@@ -143,10 +141,6 @@ const AddSupplies = ({ onClose, onSuccess }) => {
             />
           </Form.Group>
         </Col>
-      </Row>
-
-      <Row className="mb-2">
-        
         <Col md={6}>
           <Form.Group controlId="formDateReceived">
             <Form.Label>Date Received</Form.Label>
@@ -159,6 +153,9 @@ const AddSupplies = ({ onClose, onSuccess }) => {
             />
           </Form.Group>
         </Col>
+      </Row>
+
+      <Row className="mb-2">
         <Col md={6}>
           <Form.Group controlId="formExpiryDate">
             <Form.Label>Expiry Date</Form.Label>
@@ -172,13 +169,13 @@ const AddSupplies = ({ onClose, onSuccess }) => {
           </Form.Group>
         </Col>
       </Row>
+
       <div className="text-end">
         <Button variant="primary" type="submit" disabled={loading}>
           {loading ? 'Adding...' : 'Add Supply'}
         </Button>
       </div>
     </Form>
-    </>
   );
 };
 

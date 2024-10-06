@@ -159,19 +159,12 @@ const AddSupplies = ({ onClose, onSuccess }) => {
             />
           </Form.Group>
         </Col>
-        <Col md={6}>
-          <Form.Group controlId="formExpiryDate">
-            <Form.Label>Expiry Date</Form.Label>
-            <Form.Control
-              type="date"
-              name="expiryDate"
-              value={formData.expiryDate}
-              onChange={handleChange}
-              size="sm" // Smaller size
-            />
-          </Form.Group>
-        </Col>
       </Row>
+
+      <Row className="mb-2">
+        
+      </Row>
+
       <div className="text-end">
         <Button variant="primary" type="submit" disabled={loading}>
           {loading ? 'Adding...' : 'Add Supply'}

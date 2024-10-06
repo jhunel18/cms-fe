@@ -9,10 +9,9 @@ import {Routes, Route} from 'react-router-dom'
 import ProtectedRoute from './components/protected/ProtectedRoute';
 import NotFoundPage from './pages/shared/NotFoundPage';
 import ViewUsers from './pages/admin/ViewUsersPage'
-import ViewSupplies from './pages/user/ViewSuppliesPage';
+import SuppliesPage from './pages/user/ViewSuppliesPage';
 import ClientsPage from './pages/user/ClientsPage';
 import AddUsers from './pages/admin/AddUsersPage';
-import AddSupplies from './pages/user/AddSuppliesPage';
 
 function App() {
   
@@ -46,15 +45,9 @@ function App() {
           } 
         />
         <Route 
-          path="/supplies/add" 
+          path="/supplies" 
           element={
-            <ProtectedRoute component={AddSupplies} requiredRole="role_user" />
-          } 
-        />
-        <Route 
-          path="/supplies/view" 
-          element={
-            <ProtectedRoute component={ViewSupplies} requiredRole="role_user" />
+            <ProtectedRoute component={SuppliesPage} requiredRole="role_user" />
           } 
         />
          <Route 

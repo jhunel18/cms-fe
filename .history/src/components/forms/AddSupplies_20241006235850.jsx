@@ -75,7 +75,7 @@ const AddSupplies = ({ onClose, onSuccess }) => {
       </Row>
 
       <Row className="mb-2">
-        <Col md={4}>
+        <Col md={6}>
           <Form.Group controlId="formCategory">
             <Form.Label>Category</Form.Label>
             <Form.Control
@@ -88,7 +88,7 @@ const AddSupplies = ({ onClose, onSuccess }) => {
             />
           </Form.Group>
         </Col>
-        <Col md={4}>
+        <Col md={6}>
           <Form.Group controlId="formDosageForm">
             <Form.Label>Dosage Form</Form.Label>
             <Form.Control
@@ -101,7 +101,7 @@ const AddSupplies = ({ onClose, onSuccess }) => {
             />
           </Form.Group>
         </Col>
-        <Col md={4}>
+        <Col md={6}>
           <Form.Group controlId="formDosage">
             <Form.Label>Dosage</Form.Label>
             <Form.Control
@@ -117,6 +117,7 @@ const AddSupplies = ({ onClose, onSuccess }) => {
       </Row>
 
       <Row className="mb-2">
+        
         <Col md={6}>
           <Form.Group controlId="formUnit">
             <Form.Label>Unit</Form.Label>
@@ -130,6 +131,9 @@ const AddSupplies = ({ onClose, onSuccess }) => {
             />
           </Form.Group>
         </Col>
+      </Row>
+
+      <Row className="mb-2">
         <Col md={6}>
           <Form.Group controlId="formQuantity">
             <Form.Label>Quantity</Form.Label>
@@ -143,10 +147,6 @@ const AddSupplies = ({ onClose, onSuccess }) => {
             />
           </Form.Group>
         </Col>
-      </Row>
-
-      <Row className="mb-2">
-        
         <Col md={6}>
           <Form.Group controlId="formDateReceived">
             <Form.Label>Date Received</Form.Label>
@@ -159,6 +159,9 @@ const AddSupplies = ({ onClose, onSuccess }) => {
             />
           </Form.Group>
         </Col>
+      </Row>
+
+      <Row className="mb-2">
         <Col md={6}>
           <Form.Group controlId="formExpiryDate">
             <Form.Label>Expiry Date</Form.Label>
@@ -172,6 +175,7 @@ const AddSupplies = ({ onClose, onSuccess }) => {
           </Form.Group>
         </Col>
       </Row>
+
       <div className="text-end">
         <Button variant="primary" type="submit" disabled={loading}>
           {loading ? 'Adding...' : 'Add Supply'}

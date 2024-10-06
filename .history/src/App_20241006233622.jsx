@@ -12,7 +12,7 @@ import ViewUsers from './pages/admin/ViewUsersPage'
 import ViewSupplies from './pages/user/ViewSuppliesPage';
 import ClientsPage from './pages/user/ClientsPage';
 import AddUsers from './pages/admin/AddUsersPage';
-import AddSupplies from './pages/user/AddSuppliesPage';
+import AddSupplies from './components/forms/AddSupplies';
 
 function App() {
   
@@ -48,7 +48,7 @@ function App() {
         <Route 
           path="/supplies/add" 
           element={
-            <ProtectedRoute component={AddSupplies} requiredRole="role_user" />
+            <ProtectedRoute component={ViewSupplies} requiredRole="role_user" />
           } 
         />
         <Route 

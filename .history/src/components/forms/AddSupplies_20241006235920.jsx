@@ -130,19 +130,6 @@ const AddSupplies = ({ onClose, onSuccess }) => {
             />
           </Form.Group>
         </Col>
-        <Col md={6}>
-          <Form.Group controlId="formQuantity">
-            <Form.Label>Quantity</Form.Label>
-            <Form.Control
-              type="number"
-              name="quantity"
-              value={formData.quantity}
-              onChange={handleChange}
-              placeholder="Enter quantity"
-              size="sm" // Smaller size
-            />
-          </Form.Group>
-        </Col>
       </Row>
 
       <Row className="mb-2">
@@ -159,6 +146,9 @@ const AddSupplies = ({ onClose, onSuccess }) => {
             />
           </Form.Group>
         </Col>
+      </Row>
+
+      <Row className="mb-2">
         <Col md={6}>
           <Form.Group controlId="formExpiryDate">
             <Form.Label>Expiry Date</Form.Label>
@@ -172,6 +162,7 @@ const AddSupplies = ({ onClose, onSuccess }) => {
           </Form.Group>
         </Col>
       </Row>
+
       <div className="text-end">
         <Button variant="primary" type="submit" disabled={loading}>
           {loading ? 'Adding...' : 'Add Supply'}

@@ -172,6 +172,11 @@ const AddSupplies = ({ onClose, onSuccess }) => {
           </Form.Group>
         </Col>
       </Row>
+
+      <Row className="mb-2">
+        
+      </Row>
+
       <div className="text-end">
         <Button variant="primary" type="submit" disabled={loading}>
           {loading ? 'Adding...' : 'Add Supply'}

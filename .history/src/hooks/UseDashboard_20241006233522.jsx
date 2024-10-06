@@ -31,8 +31,8 @@ export function useDashboardData(role) {
                     name: 'Manage Supplies', 
                     icon: faFileAlt,
                     subMenu: [
-                      { name: 'Add Supply', to: '/supplies/add' },
-                      { name: 'View Supplies', to: '/supplies/view' },
+                      { name: 'Add Supply', to: '/manage-supplies/add' },
+                      { name: 'View Supplies', to: '/manage-supplies/view' },
                     ]
                 },
 

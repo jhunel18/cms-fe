@@ -28,11 +28,11 @@ export function useDashboardData(role) {
                 { name: 'Clients', icon: faUser, to: '/clients' },
                 // { name: 'Supplies', icon: faSuitcaseMedical, to: '/supplies' },
                 {
-                    name: 'Manage Supplies', 
+                    name: 'Manage Users', 
                     icon: faFileAlt,
                     subMenu: [
-                      { name: 'Add Supply', to: '/supplies/add' },
-                      { name: 'View Supplies', to: '/supplies/view' },
+                      { name: 'Add User', to: '/manage-users/add' },
+                      { name: 'View Users', to: '/manage-users/view' },
                     ]
                 },
 

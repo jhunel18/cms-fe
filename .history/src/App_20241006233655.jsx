@@ -12,7 +12,7 @@ import ViewUsers from './pages/admin/ViewUsersPage'
 import ViewSupplies from './pages/user/ViewSuppliesPage';
 import ClientsPage from './pages/user/ClientsPage';
 import AddUsers from './pages/admin/AddUsersPage';
-import AddSupplies from './pages/user/AddSuppliesPage';
+import AddSupplies from './components/forms/AddSuppliesPage';
 
 function App() {
   

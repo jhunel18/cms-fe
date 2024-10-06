@@ -12,7 +12,6 @@ import ViewUsers from './pages/admin/ViewUsersPage'
 import ViewSupplies from './pages/user/ViewSuppliesPage';
 import ClientsPage from './pages/user/ClientsPage';
 import AddUsers from './pages/admin/AddUsersPage';
-import AddSupplies from './pages/user/AddSuppliesPage';
 
 function App() {
   
@@ -43,12 +42,6 @@ function App() {
           path="/user-dashboard" 
           element={
             <ProtectedRoute component={UserDashboardPage} requiredRole="role_user" />
-          } 
-        />
-        <Route 
-          path="/supplies/add" 
-          element={
-            <ProtectedRoute component={AddSupplies} requiredRole="role_user" />
           } 
         />
         <Route 

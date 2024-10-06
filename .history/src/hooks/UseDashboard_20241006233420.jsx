@@ -26,16 +26,8 @@ export function useDashboardData(role) {
             setMenuItems([
                 { name: 'Dashboard', icon: faTachometerAlt, to: '/user-dashboard' },
                 { name: 'Clients', icon: faUser, to: '/clients' },
-                // { name: 'Supplies', icon: faSuitcaseMedical, to: '/supplies' },
-                {
-                    name: 'Manage Supplies', 
-                    icon: faFileAlt,
-                    subMenu: [
-                      { name: 'Add Supply', to: '/supplies/add' },
-                      { name: 'View Supplies', to: '/supplies/view' },
-                    ]
-                },
-
+                { name: 'Supplies', icon: faSuitcaseMedical, to: '/supplies' },
+                
                 { name: 'Treatment Record', icon: faNotesMedical, to: '/treatment-record' },
                 { 
                     name: 'Reports', 
