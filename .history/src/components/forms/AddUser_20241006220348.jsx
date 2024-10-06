@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Form, Button, Row, Col, Alert } from 'react-bootstrap';
 import { AdminService } from '../../services/AdminService';
 
-const AddUser = () => {
+const AddUser = ({ onClose, onSuccess }) => {
   const [formData, setFormData] = useState({
     fname: '',
     mname: '',
@@ -27,16 +27,13 @@ const AddUser = () => {
     try {
       await AdminService.register(formData); // Adjust based on your API's expected request body
       setSuccess('User added successfully!'); // Set success message
-      // onSuccess(); // Trigger success callback to refetch users
-     // Dismiss success alert after 3 seconds
-     setTimeout(() => {
-      setSuccess(null);
-    }, 3000);
-    } catch (err) {
-      setError(err.message);
+      onSuccess(); // Trigger success callback to refetch users
+      // onClose(); // Uncomment if you want to close modal on success
       setTimeout(() => {
         setError(null);
-      }, 1000);
+      }, 3000);
+    } catch (err) {
+      setError(err.message);
     } finally {
       setLoading(false);
     }
@@ -46,8 +43,6 @@ const AddUser = () => {
     <Form onSubmit={handleSubmit}>
       {error && <Alert variant="danger">{error}</Alert>} {/* Display error message */}
       {success && <Alert variant="success">{success}</Alert>} {/* Display success message */}
-      <h3>Add New User</h3>
-      <hr />
       <Row className="mb-3">
         <Col md={6}>
           <Form.Group controlId="formFirstName">
@@ -58,7 +53,6 @@ const AddUser = () => {
               value={formData.fname}
               onChange={handleChange}
               placeholder="Enter first name"
-              required
             />
           </Form.Group>
         </Col>
@@ -85,7 +79,6 @@ const AddUser = () => {
               value={formData.lname}
               onChange={handleChange}
               placeholder="Enter last name"
-              required
             />
           </Form.Group>
         </Col>
@@ -116,7 +109,6 @@ const AddUser = () => {
               value={formData.email}
               onChange={handleChange}
               placeholder="Enter email"
-              required
             />
           </Form.Group>
         </Col>
@@ -129,7 +121,6 @@ const AddUser = () => {
               value={formData.password}
               onChange={handleChange}
               placeholder="Enter Password"
-              required
             />
           </Form.Group>
         </Col>

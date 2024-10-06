@@ -13,7 +13,6 @@ import { AdminService } from "../../services/AdminService";
 import UsersTable from "../../components/tables/UsersTable";
 
 const RegisterUserPage = () => {
-  const navigate = useNavigate();
   const { menuItems, username } = useDashboardData(getUserRole());
   const [showModal, setShowModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false); // State to control delete confirmation modal
@@ -52,7 +51,7 @@ const RegisterUserPage = () => {
   };
 
   const handleAddClick = () =>{
-    navigate("/manage-users/add"); // Redirect to add-users page
+    navigate("/add"); // Redirect to add-users page
 
   }
 
@@ -68,7 +67,7 @@ const RegisterUserPage = () => {
               <h3>Manage Users</h3>
             </Col>
             <Col className="text-end">
-              <Button variant="success" onClick={handleAddClick}>
+              <Button variant="success" on>
                 <FontAwesomeIcon icon={faPlusCircle} /> Add
               </Button>
             </Col>

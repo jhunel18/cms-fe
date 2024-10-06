@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
-import { Form, Button, Row, Col, Alert } from 'react-bootstrap';
+import { Form, Button, Row, Col } from 'react-bootstrap';
 import { AdminService } from '../../services/AdminService';
 
-const AddUser = () => {
+const AddUser = ({ onClose, onSuccess }) => {
   const [formData, setFormData] = useState({
     fname: '',
     mname: '',
-    lname: '',
+    lname:'',
     email: '',
     password: '',
     branch: '',
   });
   const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(null); // State for success message
-  const [loading, setLoading] = useState(false);
+  const[success, setSucess] = useState(null);
+  const[loading, setLoading] = useState(false)
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,31 +23,22 @@ const AddUser = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setSuccess(null); // Reset success message on new submission
     try {
       await AdminService.register(formData); // Adjust based on your API's expected request body
-      setSuccess('User added successfully!'); // Set success message
-      // onSuccess(); // Trigger success callback to refetch users
-     // Dismiss success alert after 3 seconds
-     setTimeout(() => {
-      setSuccess(null);
-    }, 3000);
+      onSuccess(); // Trigger success callback to refetch users
+      // onClose(); // Close modal on success
     } catch (err) {
       setError(err.message);
-      setTimeout(() => {
-        setError(null);
-      }, 1000);
-    } finally {
-      setLoading(false);
     }
+  finally {
+    setLoading(false);
+  }
   };
 
   return (
     <Form onSubmit={handleSubmit}>
-      {error && <Alert variant="danger">{error}</Alert>} {/* Display error message */}
-      {success && <Alert variant="success">{success}</Alert>} {/* Display success message */}
-      <h3>Add New User</h3>
-      <hr />
+      {error && <p className="text-danger">{error}</p>}
+      {suc && <p className="text-danger">{error}</p>}
       <Row className="mb-3">
         <Col md={6}>
           <Form.Group controlId="formFirstName">
@@ -58,7 +49,6 @@ const AddUser = () => {
               value={formData.fname}
               onChange={handleChange}
               placeholder="Enter first name"
-              required
             />
           </Form.Group>
         </Col>
@@ -85,25 +75,24 @@ const AddUser = () => {
               value={formData.lname}
               onChange={handleChange}
               placeholder="Enter last name"
-              required
             />
           </Form.Group>
         </Col>
-        <Col md={4}>
-          <Form.Group controlId="formBranch" className="mb-3">
-            <Form.Label>Branch</Form.Label>
-            <Form.Control
-              as="select"
-              name="branch"
-              value={formData.branch}
-              onChange={handleChange}
-            >
-              <option value="">Select Branch</option>
-              <option>PUP_UQ</option>
-              <option>PUP_QC</option>
-              <option>PUP_CM</option>
-            </Form.Control>
-          </Form.Group>
+        <Col md= {4}>
+        <Form.Group controlId="formBranch" className="mb-3">
+        <Form.Label>Branch</Form.Label>
+        <Form.Control
+          as="select"
+          name="branch"
+          value={formData.branch}
+          onChange={handleChange}
+        >
+          <option value="">Select Branch</option>
+          <option>PUP_UQ</option>
+          <option>PUP_QC</option>
+          <option>PUP_CM</option>
+        </Form.Control>
+      </Form.Group>
         </Col>
       </Row>
       <Row className="mb-3">
@@ -116,7 +105,6 @@ const AddUser = () => {
               value={formData.email}
               onChange={handleChange}
               placeholder="Enter email"
-              required
             />
           </Form.Group>
         </Col>
@@ -129,14 +117,14 @@ const AddUser = () => {
               value={formData.password}
               onChange={handleChange}
               placeholder="Enter Password"
-              required
             />
           </Form.Group>
         </Col>
       </Row>
+      
       <div className="text-end">
-        <Button variant="primary" type="submit" disabled={loading}>
-          {loading ? 'Adding...' : 'Add User'} {/* Show loading state */}
+        <Button variant="primary" type="submit">
+          Add User
         </Button>
       </div>
     </Form>

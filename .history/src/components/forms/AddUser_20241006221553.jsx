@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Form, Button, Row, Col, Alert } from 'react-bootstrap';
 import { AdminService } from '../../services/AdminService';
 
-const AddUser = () => {
+const AddUser = ({ onSuccess }) => {
   const [formData, setFormData] = useState({
     fname: '',
     mname: '',
@@ -27,7 +27,7 @@ const AddUser = () => {
     try {
       await AdminService.register(formData); // Adjust based on your API's expected request body
       setSuccess('User added successfully!'); // Set success message
-      // onSuccess(); // Trigger success callback to refetch users
+      onSuccess(); // Trigger success callback to refetch users
      // Dismiss success alert after 3 seconds
      setTimeout(() => {
       setSuccess(null);

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Form, Button, Row, Col, Alert } from 'react-bootstrap';
 import { AdminService } from '../../services/AdminService';
 
-const AddUser = () => {
+const AddUser = ({ onSuccess }) => {
   const [formData, setFormData] = useState({
     fname: '',
     mname: '',

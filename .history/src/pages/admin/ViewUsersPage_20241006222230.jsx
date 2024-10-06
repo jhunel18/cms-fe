@@ -13,7 +13,6 @@ import { AdminService } from "../../services/AdminService";
 import UsersTable from "../../components/tables/UsersTable";
 
 const RegisterUserPage = () => {
-  const navigate = useNavigate();
   const { menuItems, username } = useDashboardData(getUserRole());
   const [showModal, setShowModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false); // State to control delete confirmation modal
@@ -51,10 +50,10 @@ const RegisterUserPage = () => {
     setShowDeleteModal(false);
   };
 
-  const handleAddClick = () =>{
-    navigate("/manage-users/add"); // Redirect to add-users page
-
-  }
+  // const handleAddUserSuccess = () => {
+  //   setShowModal(false); // Close the modal
+  //   refetch(); // Re-fetch the users after adding a new user
+  // };
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
@@ -68,12 +67,11 @@ const RegisterUserPage = () => {
               <h3>Manage Users</h3>
             </Col>
             <Col className="text-end">
-              <Button variant="success" onClick={handleAddClick}>
+              <Button variant="success">
                 <FontAwesomeIcon icon={faPlusCircle} /> Add
               </Button>
             </Col>
           </Row>
-
           <UsersTable users={users} handleDeleteClick={handleDeleteClick} />
 
           <CustomModal

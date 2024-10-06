@@ -52,7 +52,7 @@ const RegisterUserPage = () => {
   };
 
   const handleAddClick = () =>{
-    navigate("/manage-users/add"); // Redirect to add-users page
+    navigate("/"); // Redirect to add-users page
 
   }
 

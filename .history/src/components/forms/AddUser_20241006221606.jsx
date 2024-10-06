@@ -27,7 +27,7 @@ const AddUser = () => {
     try {
       await AdminService.register(formData); // Adjust based on your API's expected request body
       setSuccess('User added successfully!'); // Set success message
-      // onSuccess(); // Trigger success callback to refetch users
+      onSuccess(); // Trigger success callback to refetch users
      // Dismiss success alert after 3 seconds
      setTimeout(() => {
       setSuccess(null);

@@ -6,10 +6,16 @@ import AddUser from '../../components/forms/AddUser';
 
 const AddUsersPage = () => {
   const { menuItems, username } = useDashboardData(getUserRole());
+
+//   const handleAddUserSuccess = () => {
+    
+//   };
+
   return (
     <div>
       <RootLayout menuItems={menuItems} username={username}>
         <div className="custom-wrapper">
+          <AddUser onSuccess={handleAddUserSuccess} />
           <AddUser/>
         </div>
       </RootLayout>
