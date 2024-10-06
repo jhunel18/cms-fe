@@ -13,7 +13,7 @@ const AddUser = () => {
   });
   // const [error, setError] = useState(null);
   // const [success, setSuccess] = useState(null); // State for success message
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,7 +28,7 @@ const AddUser = () => {
       
       toast.success('User added successfully!');
     } catch (err) {
-      // setError(err.message);
+      setError(err.message);
       toast.error('Error adding User!');
       // setError(err.message);
     } finally {
@@ -38,7 +38,7 @@ const AddUser = () => {
 
   return (
     <>
-    <Toaster position="top-center" reverseOrder={false} />
+    <Toaster position="top-right" reverseOrder={false} />
     <Form onSubmit={handleSubmit}>
       <h3>Add New User</h3>
       <hr />

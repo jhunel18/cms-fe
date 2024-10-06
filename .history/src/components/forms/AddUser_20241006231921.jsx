@@ -32,13 +32,13 @@ const AddUser = () => {
       toast.error('Error adding User!');
       // setError(err.message);
     } finally {
-      setLoading(false);
+      // setLoading(false);
     }
   };
 
   return (
     <>
-    <Toaster position="top-center" reverseOrder={false} />
+    <Toaster position="top-right" reverseOrder={false} />
     <Form onSubmit={handleSubmit}>
       <h3>Add New User</h3>
       <hr />

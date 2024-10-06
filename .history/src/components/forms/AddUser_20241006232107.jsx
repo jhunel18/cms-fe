@@ -38,7 +38,7 @@ const AddUser = () => {
 
   return (
     <>
-    <Toaster position="top-center" reverseOrder={false} />
+    <Toaster position="top-top-center" reverseOrder={false} />
     <Form onSubmit={handleSubmit}>
       <h3>Add New User</h3>
       <hr />
