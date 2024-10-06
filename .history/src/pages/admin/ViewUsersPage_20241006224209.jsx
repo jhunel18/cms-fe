@@ -21,12 +21,12 @@ const RegisterUserPage = () => {
 
   // Use the custom hook to fetch users
   // Use the custom hook with AdminService.getAllUsers
-  const {
-    data: users,
-    error,
-    loading,
-    refetch,
-  } = useFetchData(AdminService.getAllUsers, []);
+  // const {
+  //   data: users,
+  //   error,
+  //   loading,
+  //   refetch,
+  // } = useFetchData(AdminService.getAllUsers, []);
 
   //Delete user
   const handleDelete = (userId) => {
@@ -55,7 +55,9 @@ const RegisterUserPage = () => {
     navigate("/manage-users/add"); // Redirect to add-users page
 
   }
- 
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
 
   return (
     <div>

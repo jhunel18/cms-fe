@@ -5,7 +5,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilSquare, faEraser } from '@fortawesome/free-solid-svg-icons';
 
 const UsersTable = ({users, handleDeleteClick}) => {
-  
+  const { data: users, error, loading, refetch } = useFetchData(AdminService.getAllUsers, []);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
   return (
         <Table striped bordered hover>
           <thead>

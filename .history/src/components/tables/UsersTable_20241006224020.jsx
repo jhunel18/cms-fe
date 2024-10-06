@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilSquare, faEraser } from '@fortawesome/free-solid-svg-icons';
 
 const UsersTable = ({users, handleDeleteClick}) => {
-  
   return (
         <Table striped bordered hover>
           <thead>

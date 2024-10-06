@@ -55,7 +55,9 @@ const RegisterUserPage = () => {
     navigate("/manage-users/add"); // Redirect to add-users page
 
   }
- 
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
 
   return (
     <div>
@@ -72,7 +74,7 @@ const RegisterUserPage = () => {
             </Col>
           </Row>
 
-          <UsersTable users={users} handleDeleteClick={handleDeleteClick} />
+          {/* <UsersTable users={users} handleDeleteClick={handleDeleteClick} /> */}
 
           <CustomModal
             show={showDeleteModal}

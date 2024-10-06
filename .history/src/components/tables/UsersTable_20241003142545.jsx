@@ -1,11 +1,9 @@
 import React from 'react';
 import { Table, Button } from 'react-bootstrap';
-import useFetchData from '../../hooks/UseFetchData';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilSquare, faEraser } from '@fortawesome/free-solid-svg-icons';
 
 const UsersTable = ({users, handleDeleteClick}) => {
-  
   return (
         <Table striped bordered hover>
           <thead>
