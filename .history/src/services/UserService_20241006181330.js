@@ -18,6 +18,9 @@ export const UserService = {
             if (error.response.status === 400) {
               throw new Error("BAD_REQUEST");
           }
+            console.log(error.response)
+            console.log(error.response.data.message)
+            console.log(error.message)
             throw new Error(`Adding Data Failed: ${error.response ? error.response.data.message : error.message}`);
           }
     }
