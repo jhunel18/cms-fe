@@ -27,13 +27,8 @@ const SuppliesTable = ({supplies, loading, error, handleDeleteClick}) => {
               <th>#</th>
               <th>Brand Name</th>
               <th>Generic Name</th>
-              <th>Indications</th>
-              <th>Dosage Form</th>
-              <th>Dosage</th>
-              <th>Unit</th>
-              <th>Quantity</th>
-              <th>Date Received</th>
-              <th>Expiry Date</th>
+              <th></th>
+              <th>Role</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -43,19 +38,13 @@ const SuppliesTable = ({supplies, loading, error, handleDeleteClick}) => {
                 <td>{index + 1}</td>
                 <td>{supply.brandName}</td>
                 <td>{supply.genericName}</td>
-                <td>{supply.category}</td>
-                <td>{supply.dosageForm}</td>
-                <td>{supply.dosage}</td>
-                <td>{supply.category}</td>
-                <td>{supply.unit}</td>
-                <td>{supply.quantity}</td>
-                <td>{supply.dateReceived}</td>
-                <td>{supply.expiryDate}</td>
+                <td>{user.email}</td>
+                <td>{user.role}</td>
                 <td>
                 <Button><FontAwesomeIcon icon={faPencilSquare} /></Button>
                   <Button
                     variant="danger"
-                    onClick={() => handleDeleteClick(supply)}
+                    onClick={() => handleDeleteClick(user)}
                   >
                     <FontAwesomeIcon icon={faEraser} />
                   </Button>

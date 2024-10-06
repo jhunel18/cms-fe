@@ -21,9 +21,9 @@ export const UserService = {
             throw new Error(`Adding Data Failed: ${error.response ? error.response.data.message : error.message}`);
           }
     },
-    async getAllSupplies(){
+    async getAllUsers(){
         try {
-            const response = await axios.get(`${API_URL}/api/supplies/`, {
+            const response = await axios.get(`${API_URL}/api/admin/`, {
               headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${getToken()}` // If needed

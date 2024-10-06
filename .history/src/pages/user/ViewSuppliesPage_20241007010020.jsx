@@ -38,11 +38,11 @@ const SuppliesPage = () => {
   };
 
   const handleDeleteClick = (supply) => {
-    setSelectedSupply(supply); // Store the selected user
+    setSelectedUser(supply); // Store the selected user
     setShowDeleteModal(true); // Show delete confirmation modal
   };
   const handleDeleteClose = () => {
-    setSelectedSupply(null);
+    setSelectedUser(null);
     setShowDeleteModal(false);
   };
   const handleAddClick = () => {

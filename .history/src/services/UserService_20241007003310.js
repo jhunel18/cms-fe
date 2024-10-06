@@ -23,7 +23,7 @@ export const UserService = {
     },
     async getAllSupplies(){
         try {
-            const response = await axios.get(`${API_URL}/api/supplies/`, {
+            const response = await axios.get(`${API_URL}/api/admin/`, {
               headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${getToken()}` // If needed

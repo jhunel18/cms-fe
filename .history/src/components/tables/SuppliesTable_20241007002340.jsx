@@ -1,27 +1,24 @@
-import React from 'react';
-import { Table, Button } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPencilSquare, faEraser } from '@fortawesome/free-solid-svg-icons';
+import React from 'react'
 
-
-const UsersTable = ({users, loading, error, handleDeleteClick}) => {
-  if (loading) {
-    return (
-      <div>
-        <p>Loading users...</p>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div>
-        <p>Error loading users: {error.message}</p>
-      </div>
-    );
-  }
+const SuppliesTable = ({supplies, loading, error, handleDeleteClick}) => {
+    if (loading) {
+        return (
+          <div>
+            <p>Loading users...</p>
+          </div>
+        );
+      }
+    
+      if (error) {
+        return (
+          <div>
+            <p>Error loading users: {error.message}</p>
+          </div>
+        );
+      }
   return (
-        <Table striped bordered hover>
+    <>
+     <Table striped bordered hover>
           <thead>
             <tr>
               <th>#</th>
@@ -53,7 +50,8 @@ const UsersTable = ({users, loading, error, handleDeleteClick}) => {
             ))}
           </tbody>
         </Table>
+    </>
   )
 }
 
-export default UsersTable
+export default SuppliesTable

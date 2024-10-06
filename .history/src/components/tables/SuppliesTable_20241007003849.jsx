@@ -55,7 +55,7 @@ const SuppliesTable = ({supplies, loading, error, handleDeleteClick}) => {
                 <Button><FontAwesomeIcon icon={faPencilSquare} /></Button>
                   <Button
                     variant="danger"
-                    onClick={() => handleDeleteClick(supply)}
+                    onClick={() => handleDeleteClick(user)}
                   >
                     <FontAwesomeIcon icon={faEraser} />
                   </Button>

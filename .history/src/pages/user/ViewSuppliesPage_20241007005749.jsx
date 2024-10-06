@@ -14,9 +14,6 @@ import { UserService } from "../../services/UserService";
 
 const SuppliesPage = () => {
   const { menuItems, username } = useDashboardData(getUserRole());
-  const [showDeleteModal, setShowDeleteModal] = useState(false); // State to control delete confirmation modal
-  const [selectedSupply, setSelectedSupply] = useState(null); // Store the user to delete
-
   const navigate = useNavigate();
   const {
     data: supplies,
@@ -25,26 +22,7 @@ const SuppliesPage = () => {
     refetch,
   } = useFetchData(UserService.getAllSupplies, []);
   
-  const handleDelete = (supplyId) => {
-    AdminService.deleteUser(supplyId)
-      .then(() => {
-        refetch(); // Re-fetch the users after deletion
-        setShowDeleteModal(false); // Close the delete confirmation modal
-      })
-      .catch((error) => {
-        console.error("Error deleting user:", error);
-        // Optionally handle the error
-      });
-  };
-
-  const handleDeleteClick = (supply) => {
-    setSelectedSupply(supply); // Store the selected user
-    setShowDeleteModal(true); // Show delete confirmation modal
-  };
-  const handleDeleteClose = () => {
-    setSelectedSupply(null);
-    setShowDeleteModal(false);
-  };
+  
   const handleAddClick = () => {
     navigate("/supplies/add"); // Redirect to add-users page
   };
@@ -73,23 +51,6 @@ const SuppliesPage = () => {
             error={error}
             handleDeleteClick={handleDeleteClick}
           />
-
-<CustomModal
-            show={showDeleteModal}
-            handleClose={handleDeleteClose}
-            title="Confirm Delete"
-          >
-            <p>Are you sure you want to delete?</p>
-            <Button
-              variant="danger"
-              onClick={() => handleDelete(selectedSupply?.id)}
-            >
-              Yes, Delete
-            </Button>{" "}
-            <Button variant="secondary" onClick={handleDeleteClose}>
-              Cancel
-            </Button>
-          </CustomModal>
           </div>
     </RootLayout>
   )

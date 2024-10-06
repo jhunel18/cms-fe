@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilSquare, faEraser } from '@fortawesome/free-solid-svg-icons';
 
 
-const UsersTable = ({users, loading, error, handleDeleteClick}) => {
+const UsersTable = ({supplies, loading, error, handleDeleteClick}) => {
   if (loading) {
     return (
       <div>

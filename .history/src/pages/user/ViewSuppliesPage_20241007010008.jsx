@@ -15,7 +15,7 @@ import { UserService } from "../../services/UserService";
 const SuppliesPage = () => {
   const { menuItems, username } = useDashboardData(getUserRole());
   const [showDeleteModal, setShowDeleteModal] = useState(false); // State to control delete confirmation modal
-  const [selectedSupply, setSelectedSupply] = useState(null); // Store the user to delete
+  const [selectedUser, setSelectedUser] = useState(null); // Store the user to delete
 
   const navigate = useNavigate();
   const {
@@ -38,11 +38,11 @@ const SuppliesPage = () => {
   };
 
   const handleDeleteClick = (supply) => {
-    setSelectedSupply(supply); // Store the selected user
+    setSelectedUser(supply); // Store the selected user
     setShowDeleteModal(true); // Show delete confirmation modal
   };
   const handleDeleteClose = () => {
-    setSelectedSupply(null);
+    setSelectedUser(null);
     setShowDeleteModal(false);
   };
   const handleAddClick = () => {

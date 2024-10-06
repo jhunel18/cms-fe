@@ -45,17 +45,12 @@ const SuppliesTable = ({supplies, loading, error, handleDeleteClick}) => {
                 <td>{supply.genericName}</td>
                 <td>{supply.category}</td>
                 <td>{supply.dosageForm}</td>
-                <td>{supply.dosage}</td>
-                <td>{supply.category}</td>
-                <td>{supply.unit}</td>
-                <td>{supply.quantity}</td>
-                <td>{supply.dateReceived}</td>
-                <td>{supply.expiryDate}</td>
+                <td>{supply.dosafeg}</td>
                 <td>
                 <Button><FontAwesomeIcon icon={faPencilSquare} /></Button>
                   <Button
                     variant="danger"
-                    onClick={() => handleDeleteClick(supply)}
+                    onClick={() => handleDeleteClick(user)}
                   >
                     <FontAwesomeIcon icon={faEraser} />
                   </Button>

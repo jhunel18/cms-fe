@@ -42,7 +42,7 @@ const SuppliesPage = () => {
     setShowDeleteModal(true); // Show delete confirmation modal
   };
   const handleDeleteClose = () => {
-    setSelectedSupply(null);
+    setSelectedUser(null);
     setShowDeleteModal(false);
   };
   const handleAddClick = () => {
