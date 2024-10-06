@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilSquare, faEraser } from '@fortawesome/free-solid-svg-icons';
 import { AdminService } from "../../services/AdminService";
 
-const UsersTable = ({users, loading, error, handleDeleteClick}) => {
+const UsersTable = ({handleDeleteClick}) => {
   if (loading) {
     return (
       <div>

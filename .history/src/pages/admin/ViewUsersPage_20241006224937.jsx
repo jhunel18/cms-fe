@@ -15,7 +15,7 @@ import UsersTable from "../../components/tables/UsersTable";
 const RegisterUserPage = () => {
   const navigate = useNavigate();
   const { menuItems, username } = useDashboardData(getUserRole());
-  const [showModal, setShowModal] = useState(false);
+
   const [showDeleteModal, setShowDeleteModal] = useState(false); // State to control delete confirmation modal
   const [selectedUser, setSelectedUser] = useState(null); // Store the user to delete
 
@@ -51,9 +51,10 @@ const RegisterUserPage = () => {
     setShowDeleteModal(false);
   };
 
-  const handleAddClick = () => {
+  const handleAddClick = () =>{
     navigate("/manage-users/add"); // Redirect to add-users page
-  };
+
+  }
 
   // if (loading) return <p>Loading...</p>;
   // if (error) return <p>Error: {error.message}</p>;
@@ -73,13 +74,7 @@ const RegisterUserPage = () => {
             </Col>
           </Row>
 
-          {/* <UsersTable users={users} handleDeleteClick={handleDeleteClick} /> */}
-          <UsersTable
-            users={users}
-            loading={loading}
-            error={error}
-            handleDeleteClick={handleDeleteClick}
-          />
+          <UsersTable users={users} handleDeleteClick={handleDeleteClick} />
 
           <CustomModal
             show={showDeleteModal}

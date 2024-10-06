@@ -31,14 +31,17 @@ const RegisterUserPage = () => {
   //Delete user
   const handleDelete = (userId) => {
     AdminService.deleteUser(userId)
-      .then(() => {
-        refetch(); // Re-fetch the users after deletion
-        setShowDeleteModal(false); // Close the delete confirmation modal
-      })
-      .catch((error) => {
-        console.error("Error deleting user:", error);
-        // Optionally handle the error
-      });
+    .then(() => {
+      setLoading(true);  // Ensure loading state is updated before refetch
+      refetch();         // Re-fetch the data to refresh the table
+    })
+    .finally(() => {
+      setLoading(false); // Reset loading state after the operation is done
+      setShowDeleteModal(false); // Close the delete confirmation modal
+    })
+    .catch((error) => {
+      console.error("Error deleting user:", error);
+    });
   };
 
   const handleDeleteClick = (user) => {
@@ -51,12 +54,13 @@ const RegisterUserPage = () => {
     setShowDeleteModal(false);
   };
 
-  const handleAddClick = () => {
+  const handleAddClick = () =>{
     navigate("/manage-users/add"); // Redirect to add-users page
-  };
 
-  // if (loading) return <p>Loading...</p>;
-  // if (error) return <p>Error: {error.message}</p>;
+  }
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
 
   return (
     <div>
@@ -73,13 +77,7 @@ const RegisterUserPage = () => {
             </Col>
           </Row>
 
-          {/* <UsersTable users={users} handleDeleteClick={handleDeleteClick} /> */}
-          <UsersTable
-            users={users}
-            loading={loading}
-            error={error}
-            handleDeleteClick={handleDeleteClick}
-          />
+          <UsersTable users={users} handleDeleteClick={handleDeleteClick} />
 
           <CustomModal
             show={showDeleteModal}
