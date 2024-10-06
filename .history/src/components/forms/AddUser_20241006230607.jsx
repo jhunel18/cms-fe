@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Button, Row, Col, Modal} from 'react-bootstrap';
+import { Form, Button, Row, Col, Alert } from 'react-bootstrap';
 import { AdminService } from '../../services/AdminService';
 import toast, { Toaster } from 'react-hot-toast';
 const AddUser = () => {
@@ -26,21 +26,19 @@ const AddUser = () => {
     setSuccess(null); // Reset success message on new submission
     try {
       await AdminService.register(formData); // Adjust based on your API's expected request body
-      
       toast.success('User added successfully!');
     } catch (err) {
-      setError(err.message);
-      toast.error('Error adding User!');
-      // setError(err.message);
+      toast.success('Error adding User!');
+      setError(err.message)
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <>
-    <Toaster position="top-right" reverseOrder={false} />
     <Form onSubmit={handleSubmit}>
+      {error && <Alert variant="danger">{error}</Alert>} {/* Display error message */}
+      {success && <Alert variant="success">{success}</Alert>} {/* Display success message */}
       <h3>Add New User</h3>
       <hr />
       <Row className="mb-3">
@@ -135,7 +133,6 @@ const AddUser = () => {
         </Button>
       </div>
     </Form>
-    </>
   );
 };
 

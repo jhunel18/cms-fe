@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Button, Row, Col, Modal} from 'react-bootstrap';
+import { Form, Button, Row, Col, Alert } from 'react-bootstrap';
 import { AdminService } from '../../services/AdminService';
 import toast, { Toaster } from 'react-hot-toast';
 const AddUser = () => {
@@ -14,6 +14,7 @@ const AddUser = () => {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null); // State for success message
   const [loading, setLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false); // Modal visibility state
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,11 +27,10 @@ const AddUser = () => {
     setSuccess(null); // Reset success message on new submission
     try {
       await AdminService.register(formData); // Adjust based on your API's expected request body
-      
-      toast.success('User added successfully!');
+      setShowModal(true); // Show success modal
+      // toast.success('User added successfully!');
     } catch (err) {
-      setError(err.message);
-      toast.error('Error adding User!');
+      // toast.error('Error adding User!');
       // setError(err.message);
     } finally {
       setLoading(false);
@@ -39,7 +39,7 @@ const AddUser = () => {
 
   return (
     <>
-    <Toaster position="top-right" reverseOrder={false} />
+    <Toaster />
     <Form onSubmit={handleSubmit}>
       <h3>Add New User</h3>
       <hr />

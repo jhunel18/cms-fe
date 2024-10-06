@@ -11,8 +11,6 @@ const AddUser = () => {
     password: '',
     branch: '',
   });
-  const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(null); // State for success message
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {

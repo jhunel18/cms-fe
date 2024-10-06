@@ -14,6 +14,7 @@ const AddUser = () => {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null); // State for success message
   const [loading, setLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false); // Modal visibility state
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,7 +27,7 @@ const AddUser = () => {
     setSuccess(null); // Reset success message on new submission
     try {
       await AdminService.register(formData); // Adjust based on your API's expected request body
-      
+      setShowModal(true); // Show success modal
       toast.success('User added successfully!');
     } catch (err) {
       setError(err.message);
