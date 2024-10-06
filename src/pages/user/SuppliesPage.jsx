@@ -15,6 +15,12 @@ const SuppliesPage = () => {
 
   const handleShow = () => setShowModal(true);
   const handleClose = () => setShowModal(false);
+
+  const handleAddSuppliesSuccess = () => {
+    setShowModal(false); // Close the modal
+    refetch(); // Re-fetch the users after adding a new user
+  };
+
   return (
     <RootLayout menuItems={menuItems} username={username}>
       {/* <h2>User, {username}</h2> */}
@@ -36,7 +42,7 @@ const SuppliesPage = () => {
             title="Add New Supplies"
           >
             
-            <AddSupplies/>
+            <AddSupplies onSuccess={handleAddSuppliesSuccess} onClose={handleClose}/>
           </CustomModal>
           </Row>
           </div>
