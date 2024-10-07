@@ -21,7 +21,7 @@ const SuppliesTable = ({supplies, loading, error, handleDeleteClick}) => {
       }
   return (
     <>
-     <Table striped bordered hover size="sm">
+     <Table striped bordered hover size="sm"r>
           <thead>
             <tr>
               <th>#</th>

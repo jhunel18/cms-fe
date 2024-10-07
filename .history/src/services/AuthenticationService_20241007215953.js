@@ -31,7 +31,7 @@ export const AuthenticationService = {
     }
   },
 
- logout() {
+ \  logout() {
     Cookies.remove('auth_token');
   },
 };

@@ -27,7 +27,24 @@ export const AuthenticationService = {
         throw new Error('Token is undefined');
       }
     } catch (error) {
-      throw new Error(`Login failed: ${error.response ? error.response.data.message : error.message}`);
+      if (error.response) {
+        // Here you can check the status code and handle it accordingly
+        switch (error.response.status) {
+          case 400:
+            throw new Error('Bad Request: Email exists or invalid data');
+          case 401:
+            throw new Error('Unauthorized: Invalid credentials');
+          case 403:
+            throw new Error('Forbidden: Access is denied');
+          case 404:
+            throw new Error('Not Found: Endpoint not found');
+          default:
+            throw new Error(`Login failed: ${error.response.data.message || 'Unknown error'}`);
+        }
+      } else {
+        // If error response is undefined, handle network or other errors
+        throw new Error(`Network Error: ${error.message}`);
+      }
     }
   },
 

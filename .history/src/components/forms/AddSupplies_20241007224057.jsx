@@ -112,7 +112,6 @@ const AddSupplies = ({ onClose, onSuccess }) => {
               <Form.Label>Dosage</Form.Label>
               <Form.Control
                 type="number"
-                min="1"
                 name="dosage"
                 value={formData.dosage}
                 onChange={handleChange}
@@ -128,17 +127,13 @@ const AddSupplies = ({ onClose, onSuccess }) => {
             <Form.Group controlId="formUnit">
               <Form.Label>Unit</Form.Label>
               <Form.Control
-                as="select"
+                type="text"
                 name="unit"
                 value={formData.unit}
                 onChange={handleChange}
+                placeholder="Enter unit (e.g., bottle)"
                 size="sm" // Smaller size
-              >
-                <option value="">Select unit</option> {/* Default option */}
-                <option value="mg">mg</option>
-                <option value="g">g</option>
-                <option value="mL">mL</option>
-              </Form.Control>
+              />
             </Form.Group>
           </Col>
           <Col md={6}>

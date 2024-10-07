@@ -112,7 +112,6 @@ const AddSupplies = ({ onClose, onSuccess }) => {
               <Form.Label>Dosage</Form.Label>
               <Form.Control
                 type="number"
-                min="1"
                 name="dosage"
                 value={formData.dosage}
                 onChange={handleChange}

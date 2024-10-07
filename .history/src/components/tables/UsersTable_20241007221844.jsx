@@ -21,7 +21,7 @@ const UsersTable = ({users, loading, error, handleDeleteClick}) => {
     );
   }
   return (
-        <Table responsive striped bordered hover size="sm">
+        <Table striped bordered hover size="sm">
           <thead>
             <tr>
               <th>#</th>
