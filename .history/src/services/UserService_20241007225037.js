@@ -38,7 +38,7 @@ export const UserService = {
 
     },
 
-    async deleteSupply(id){
+    async deleteSupplies(id){
       try {
         const response = await axios.delete(`${API_URL}/api/supplies/${id}`, {
           headers: {

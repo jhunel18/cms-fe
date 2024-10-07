@@ -38,9 +38,9 @@ export const UserService = {
 
     },
 
-    async deleteSupply(id){
+    async deleteUser(id){
       try {
-        const response = await axios.delete(`${API_URL}/api/supplies/${id}`, {
+        const response = await axios.delete(`${API_URL}/api/admin/${id}`, {
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${getToken()}` // If needed

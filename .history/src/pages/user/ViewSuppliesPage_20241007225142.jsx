@@ -26,7 +26,7 @@ const SuppliesPage = () => {
   } = useFetchData(UserService.getAllSupplies, []);
   
   const handleDelete = (supplyId) => {
-    UserService.deleteSupply(supplyId)
+    UserService.(supplyId)
       .then(() => {
         refetch(); // Re-fetch the users after deletion
         setShowDeleteModal(false); // Close the delete confirmation modal
