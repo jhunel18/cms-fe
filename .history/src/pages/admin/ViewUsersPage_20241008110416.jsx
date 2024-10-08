@@ -64,7 +64,8 @@ const RegisterUserPage = () => {
         <div className="custom-wrapper">
           <Row className="align-items-center mb-3">
             <Col>
-              <h3>Manage Users</h3>        
+              <h3>Manage Users</h3>
+            
             </Col>
             <Col className="text-end">
               <Button variant="success" onClick={handleAddClick}>
