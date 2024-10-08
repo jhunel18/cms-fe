@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import {
   DatatableWrapper,
-  BulkCheckboxControl,
-  Filter, // Not currently used but included for future reference
-  Pagination,
-  PaginationOptions,
   TableBody,
   TableHeader,
+  Pagination,
+  PaginationOptions,
 } from 'react-bs-datatable';
 import { Col, Row, Table, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -58,7 +56,7 @@ const SuppliesTable = ({ supplies, loading, error, handleDeleteClick }) => {
       supply.genericName.toLowerCase().includes(searchTerm) ||
       supply.category.toLowerCase().includes(searchTerm) ||
       supply.dosageForm.toLowerCase().includes(searchTerm) ||
-      supply.dosage.toString().includes(searchTerm) ||
+      supply.dosage.toLowerCase().includes(searchTerm) ||
       supply.unit.toLowerCase().includes(searchTerm) ||
       supply.quantity.toString().includes(searchTerm) ||
       supply.dateReceived.toLowerCase().includes(searchTerm) ||
@@ -73,14 +71,9 @@ const SuppliesTable = ({ supplies, loading, error, handleDeleteClick }) => {
   };
 
   return (
-    <DatatableWrapper body={tableData} headers={headers}  paginationOptionsProps={{
-        initialState: {
-          rowsPerPage: 5,
-          options: [5, 10, 15, 20],
-        },
-      }}>
+    <DatatableWrapper body={tableData} headers={headers}>
       <Row className="mb-4">
-        <Col xs={12} md={6}>
+        <Col xs={12}>
           {/* Search input integrated with 'react-bs-datatable' styling */}
           <input
             className="form-control form-control-sm mb-2"
@@ -91,7 +84,7 @@ const SuppliesTable = ({ supplies, loading, error, handleDeleteClick }) => {
             onChange={handleSearchChange}
           />
         </Col>
-        <Col xs={12} md={6} className="d-flex flex-col justify-content-end align-items-end">
+        <Col xs={12} sm={6} lg={4} className="d-flex flex-col justify-content-end align-items-end">
           <Pagination alwaysShowPagination paginationRange={3} />
         </Col>
       </Row>

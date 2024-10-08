@@ -12,24 +12,28 @@ import { Col, Row, Table, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilSquare, faEraser } from '@fortawesome/free-solid-svg-icons';
 
-const UsersTable = ({ users, loading, error, handleDeleteClick }) => {
+const SuppliesTable = ({ supplies, loading, error, handleDeleteClick }) => {
   const [searchText, setSearchText] = useState(''); // State to hold search term
 
   if (loading) {
-    return <p>Loading users...</p>;
+    return <p>Loading supplies...</p>;
   }
 
   if (error) {
-    return <p>Error loading users: {error.message}</p>;
+    return <p>Error loading supplies: {error.message}</p>;
   }
 
-  // Define the table columns
   const headers = [
-    // { prop: 'id', title: '#', isSortable: true },
-    { prop: 'fname', title: 'First Name', isSortable: true },
-    { prop: 'lname', title: 'Last Name', isSortable: true },
-    { prop: 'email', title: 'Email', isSortable: true },
-    { prop: 'role', title: 'Role', isSortable: true },
+    { prop: 'id', title: '#', isKey: true }, // Added 'isKey: true' for unique row identification
+    { prop: 'brandName', title: 'Brand Name' },
+    { prop: 'genericName', title: 'Generic Name' },
+    { prop: 'category', title: 'Indications' }, // Assuming 'category' is meant for 'Indications'
+    { prop: 'dosageForm', title: 'Dosage Form' },
+    { prop: 'dosage', title: 'Dosage' },
+    { prop: 'unit', title: 'Unit' },
+    { prop: 'quantity', title: 'Quantity' },
+    { prop: 'dateReceived', title: 'Date Received' },
+    { prop: 'expiryDate', title: 'Expiry Date' },
     {
       prop: 'action',
       title: 'Action',
@@ -38,7 +42,6 @@ const UsersTable = ({ users, loading, error, handleDeleteClick }) => {
           <Button variant="primary">
             <FontAwesomeIcon icon={faPencilSquare} />
           </Button>
-          {' '}
           <Button variant="danger" onClick={() => handleDeleteClick(row)}>
             <FontAwesomeIcon icon={faEraser} />
           </Button>
@@ -48,55 +51,36 @@ const UsersTable = ({ users, loading, error, handleDeleteClick }) => {
   ];
 
   // Filter data based on search term
-  const filteredUsers = users.filter((user) => {
+  const filteredSupplies = supplies.filter((supply) => {
     const searchTerm = searchText.toLowerCase(); // Case-insensitive search
     return (
-      user.fname.toLowerCase().includes(searchTerm) ||
-      user.lname.toLowerCase().includes(searchTerm) ||
-      user.email.toLowerCase().includes(searchTerm) ||
-      user.role.toLowerCase().includes(searchTerm)
+      supply.brandName.toLowerCase().includes(searchTerm) ||
+      supply.genericName.toLowerCase().includes(searchTerm) ||
+      supply.category.toLowerCase().includes(searchTerm) ||
+      supply.dosageForm.toLowerCase().includes(searchTerm) ||
+      supply.dosage.toString().includes(searchTerm) ||
+      supply.unit.toLowerCase().includes(searchTerm) ||
+      supply.quantity.toString().includes(searchTerm) ||
+      supply.dateReceived.toLowerCase().includes(searchTerm) ||
+      supply.expiryDate.toLowerCase().includes(searchTerm)
     );
   });
 
-  // Prepare the data with IDs
-  const tableData = filteredUsers.map((user, index) => ({
-    id: index + 1,
-    fname: user.fname,
-    lname: user.lname,
-    email: user.email,
-    role: user.role,
-    action: user, // This is passed for handling actions
-  }));
+  const tableData = filteredSupplies.map((supply) => ({ ...supply })); // No need to add index for ID with 'isKey: true'
 
-  // Search input handler
   const handleSearchChange = (event) => {
     setSearchText(event.target.value);
   };
 
   return (
-    <DatatableWrapper
-      body={tableData}
-      headers={headers}
-      sortProps={{
-        sortValueObj: {
-          date: (date) =>
-            parse(`${date}`, 'MMMM dd, yyyy', new Date()).getTime(),
-        },
-      }}
-      paginationOptionsProps={{
-        initialState: {
-          rowsPerPage: 5,
-          options: [5, 10, 15, 20],
-        },
-      }}
-    >
+    <DatatableWrapper body={tableData} headers={headers}>
       <Row className="mb-4">
         <Col xs={12} md={6}>
           {/* Search input integrated with 'react-bs-datatable' styling */}
           <input
             className="form-control form-control-sm mb-2"
             type="search"
-            placeholder="Search Users..."
+            placeholder="Search Supplies..."
             aria-label="Search"
             value={searchText}
             onChange={handleSearchChange}
@@ -114,4 +98,4 @@ const UsersTable = ({ users, loading, error, handleDeleteClick }) => {
   );
 };
 
-export default UsersTable;
+export default SuppliesTable;

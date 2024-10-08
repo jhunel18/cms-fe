@@ -74,14 +74,14 @@ const RegisterUserPage = () => {
           </Row>
 
           {/* <UsersTable users={users} handleDeleteClick={handleDeleteClick} /> */}
-          <Row>
+          <div>
           <UsersTable
             users={users}
             loading={loading}
             error={error}
             handleDeleteClick={handleDeleteClick}
           />
-          </Row>
+          </div>
         
 
           <CustomModal

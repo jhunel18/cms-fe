@@ -91,7 +91,7 @@ const UsersTable = ({ users, loading, error, handleDeleteClick }) => {
       }}
     >
       <Row className="mb-4">
-        <Col xs={12} md={6}>
+        <Col xs={12}>
           {/* Search input integrated with 'react-bs-datatable' styling */}
           <input
             className="form-control form-control-sm mb-2"
@@ -102,7 +102,7 @@ const UsersTable = ({ users, loading, error, handleDeleteClick }) => {
             onChange={handleSearchChange}
           />
         </Col>
-        <Col xs={12} md={6} className="d-flex flex-col justify-content-end align-items-end">
+        <Col xs={12} sm={6} lg={4} className="d-flex flex-col justify-content-end align-items-end">
           <Pagination alwaysShowPagination paginationRange={3} />
         </Col>
       </Row>

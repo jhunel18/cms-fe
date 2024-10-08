@@ -81,7 +81,7 @@ const RegisterUserPage = () => {
             error={error}
             handleDeleteClick={handleDeleteClick}
           />
-          </Row>
+          </div>
         
 
           <CustomModal
