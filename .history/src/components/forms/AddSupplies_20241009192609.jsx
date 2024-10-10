@@ -100,17 +100,16 @@ const AddSupplies = ({ onClose, onSuccess }) => {
               >
                 <option value="">Select dosage form</option>{" "}
                 {/* Default option */}
-                <option value="Tablet">Tablet</option>
-                <option value="Liquid">Liquid</option>
-                <option value="Bottle">Bottle</option>
-                <option value="Capsule">Capsule</option>
-                <option value="Ointment">Ointment</option>
+                <option value="tablet">Tablet</option>
+                <option value="liquid">Liquid</option>
+                <option value="bottle">Bottle</option>
+                <option value="capsule">Capsule</option>
               </Form.Control>
             </Form.Group>
           </Col>
           <Col md={4}>
             <Form.Group controlId="formDosage">
-              <Form.Label>Dosage(mg, g)</Form.Label>
+              <Form.Label>Dosage(mg)</Form.Label>
               <Form.Control
                 type="number"
                 min="1"

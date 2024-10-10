@@ -26,14 +26,14 @@ const SuppliesTable = ({ supplies, loading, error, handleDeleteClick }) => {
   const headers = [
     // { prop: 'id', title: '#', isKey: true }, // Added 'isKey: true' for unique row identification
     { prop: 'brandName', title: 'Brand Name', isSortable: true },
-    { prop: 'genericName', title: 'Generic Name', isSortable: true },
-    { prop: 'category', title: 'Indications', isSortable: true }, // Assuming 'category' is meant for 'Indications'
-    { prop: 'dosageForm', title: 'Dosage Form', isSortable: true },
-    { prop: 'dosage', title: 'Dosage', isSortable: true },
-    { prop: 'unit', title: 'Unit', isSortable: true },
-    { prop: 'quantity', title: 'Quantity', isSortable: true },
-    { prop: 'dateReceived', title: 'Date Received', isSortable: true },
-    { prop: 'expiryDate', title: 'Expiry Date', isSortable: true },
+    { prop: 'genericName', title: 'Generic Name' },
+    { prop: 'category', title: 'Indications' }, // Assuming 'category' is meant for 'Indications'
+    { prop: 'dosageForm', title: 'Dosage Form' },
+    { prop: 'dosage', title: 'Dosage' },
+    { prop: 'unit', title: 'Unit' },
+    { prop: 'quantity', title: 'Quantity' },
+    { prop: 'dateReceived', title: 'Date Received' },
+    { prop: 'expiryDate', title: 'Expiry Date' },
     {
       prop: 'action',
       title: 'Action',
@@ -93,7 +93,7 @@ const SuppliesTable = ({ supplies, loading, error, handleDeleteClick }) => {
           />
         </Col>
         <Col xs={12} md={6} className="d-flex flex-col justify-content-end align-items-end">
-          <Pagination alwaysShowPagination paginationRange={2} />
+          <Pagination alwaysShowPagination paginationRange={3} />
         </Col>
       </Row>
       <Table responsive striped bordered hover size="sm">

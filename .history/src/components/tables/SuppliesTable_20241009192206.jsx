@@ -32,8 +32,8 @@ const SuppliesTable = ({ supplies, loading, error, handleDeleteClick }) => {
     { prop: 'dosage', title: 'Dosage', isSortable: true },
     { prop: 'unit', title: 'Unit', isSortable: true },
     { prop: 'quantity', title: 'Quantity', isSortable: true },
-    { prop: 'dateReceived', title: 'Date Received', isSortable: true },
-    { prop: 'expiryDate', title: 'Expiry Date', isSortable: true },
+    { prop: 'dateReceived', title: 'Date Received' },
+    { prop: 'expiryDate', title: 'Expiry Date' },
     {
       prop: 'action',
       title: 'Action',
@@ -93,7 +93,7 @@ const SuppliesTable = ({ supplies, loading, error, handleDeleteClick }) => {
           />
         </Col>
         <Col xs={12} md={6} className="d-flex flex-col justify-content-end align-items-end">
-          <Pagination alwaysShowPagination paginationRange={2} />
+          <Pagination alwaysShowPagination paginationRange={3} />
         </Col>
       </Row>
       <Table responsive striped bordered hover size="sm">

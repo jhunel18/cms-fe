@@ -100,7 +100,7 @@ const AddSupplies = ({ onClose, onSuccess }) => {
               >
                 <option value="">Select dosage form</option>{" "}
                 {/* Default option */}
-                <option value="Tablet">Tablet</option>
+                <option value="tablet">Tablet</option>
                 <option value="Liquid">Liquid</option>
                 <option value="Bottle">Bottle</option>
                 <option value="Capsule">Capsule</option>

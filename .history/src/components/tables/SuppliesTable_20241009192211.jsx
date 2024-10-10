@@ -93,7 +93,7 @@ const SuppliesTable = ({ supplies, loading, error, handleDeleteClick }) => {
           />
         </Col>
         <Col xs={12} md={6} className="d-flex flex-col justify-content-end align-items-end">
-          <Pagination alwaysShowPagination paginationRange={2} />
+          <Pagination alwaysShowPagination paginationRange={3} />
         </Col>
       </Row>
       <Table responsive striped bordered hover size="sm">
