@@ -25,8 +25,16 @@ export function useDashboardData(role) {
         } else {
             setMenuItems([
                 { name: 'Dashboard', icon: faTachometerAlt, to: '/user-dashboard' },
-                { name: 'Clients', icon: faUser, to: '/clients' },
-                // { name: 'Supplies', icon: faSuitcaseMedical, to: '/supplies' },
+                //Links for Manage Clients
+                {
+                    name: 'Manage Clients', 
+                    icon: faFileAlt,
+                    subMenu: [
+                      { name: 'Add Client', to: '/clients/add' },
+                      { name: 'View Clients', to: '/clients/view' },
+                    ]
+                },
+                // Links for Manage Supplies
                 {
                     name: 'Manage Supplies', 
                     icon: faFileAlt,
@@ -36,7 +44,18 @@ export function useDashboardData(role) {
                     ]
                 },
 
-                { name: 'Treatment Record', icon: faNotesMedical, to: '/treatment-record' },
+                            
+                //Links for Treatment Record
+                {
+                    name: 'Treatment Record', 
+                    icon: faFileAlt,
+                    subMenu: [
+                      { name: 'New Treatment', to: '/treatments/add' },
+                      { name: 'View Treatments', to: '/treatments/view' },
+                    ]
+                },
+                
+                //Links for Reports
                 { 
                     name: 'Reports', 
                     icon: faFileAlt,

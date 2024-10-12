@@ -10,9 +10,12 @@ import ProtectedRoute from './components/protected/ProtectedRoute';
 import NotFoundPage from './pages/shared/NotFoundPage';
 import ViewUsers from './pages/admin/ViewUsersPage'
 import ViewSupplies from './pages/user/ViewSuppliesPage';
-import ClientsPage from './pages/user/ClientsPage';
+import AddClientPage from './pages/user/AddClientPage';
 import AddUsers from './pages/admin/AddUsersPage';
 import AddSupplies from './pages/user/AddSuppliesPage';
+import ViewClientsPage from './pages/user/ViewClientsPage';
+import AddTreatmentPage from './pages/user/AddTreatmentPage';
+import ViewTreatmentPage from './pages/user/ViewTreatmentPage';
 
 function App() {
   
@@ -56,13 +59,37 @@ function App() {
           element={
             <ProtectedRoute component={ViewSupplies} requiredRole="role_user" />
           } 
+         
         />
+         {/* Clients Page */}
          <Route 
-          path="/clients" 
+          path="/clients/add" 
           element={
-            <ProtectedRoute component={ClientsPage} requiredRole="role_user" />
+            <ProtectedRoute component={AddClientPage} requiredRole="role_user" />
           } 
         />
+         <Route 
+          path="/clients/view" 
+          element={
+            <ProtectedRoute component={ViewClientsPage} requiredRole="role_user" />
+          } 
+        />
+
+         {/* Treatment Page */}
+         <Route 
+          path="/treatments/add" 
+          element={
+            <ProtectedRoute component={AddTreatmentPage} requiredRole="role_user" />
+          } 
+        />
+         <Route 
+          path="/treatments/view" 
+          element={
+            <ProtectedRoute component={ViewTreatmentPage} requiredRole="role_user" />
+          } 
+        />
+
+        
         
         <Route path = "*" element= {<NotFoundPage/>}/>
   </Routes>
