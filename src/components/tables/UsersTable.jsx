@@ -57,17 +57,9 @@ const UsersTable = ({ users, loading, error, handleDeleteClick }) => {
       user.role.toLowerCase().includes(searchTerm)
     );
   });
-
-  // Prepare the data with IDs
-  const tableData = filteredUsers.map((user, index) => ({
-    id: index + 1,
-    fname: user.fname,
-    lname: user.lname,
-    email: user.email,
-    role: user.role,
-    action: user, // This is passed for handling actions
-  }));
-
+  
+  const tableData = filteredUsers.map((users) => ({ ...users })); // No need to add index for ID with 'isKey: true'
+ 
   // Search input handler
   const handleSearchChange = (event) => {
     setSearchText(event.target.value);
