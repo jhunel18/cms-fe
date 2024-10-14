@@ -33,8 +33,8 @@ const AddClients = () => {
       onSuccess(); // Trigger success callback to refresh users list
       onClose(); // Close modal on success
     } catch (err) {
-      setError(err.message);
       toast.error("An error occurred.");
+      setError(error)
     } finally {
       setLoading(false);
     }

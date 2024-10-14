@@ -32,8 +32,8 @@ const AddSupplies = ({ onClose, onSuccess }) => {
       onSuccess(); // Trigger success callback to refresh supplies list
       onClose(); // Close modal on success
     } catch (err) {
-      setError(err.message);
       toast.error("An error occured.");
+      setError(error);
     } finally {
       setLoading(false);
     }
