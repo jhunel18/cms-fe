@@ -32,7 +32,7 @@ const SuppliesPage = () => {
         setShowDeleteModal(false); // Close the delete confirmation modal
       })
       .catch((error) => {
-        console.error("Error deleting user:", error);
+        console.error("Error", error);
         // Optionally handle the error
       });
   };
