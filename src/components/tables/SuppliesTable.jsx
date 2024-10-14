@@ -66,15 +66,13 @@ const SuppliesTable = ({ supplies, loading, error, handleDeleteClick }) => {
       supply.expiryDate.toLowerCase().includes(searchTerm)
     );
   });
-
-  const tableData = filteredSupplies.map((supply) => ({ ...supply })); // No need to add index for ID with 'isKey: true'
-
+  
   const handleSearchChange = (event) => {
     setSearchText(event.target.value);
   };
 
   return (
-    <DatatableWrapper body={tableData} headers={headers}  paginationOptionsProps={{
+    <DatatableWrapper body={filteredSupplies} headers={headers}  paginationOptionsProps={{
         initialState: {
           rowsPerPage: 5,
           options: [5, 10, 15, 20],

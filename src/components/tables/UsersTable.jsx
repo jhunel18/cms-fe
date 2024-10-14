@@ -58,16 +58,14 @@ const UsersTable = ({ users, loading, error, handleDeleteClick }) => {
     );
   });
   
-  const tableData = filteredUsers.map((users) => ({ ...users })); // No need to add index for ID with 'isKey: true'
- 
-  // Search input handler
+    // Search input handler
   const handleSearchChange = (event) => {
     setSearchText(event.target.value);
   };
 
   return (
     <DatatableWrapper
-      body={tableData}
+      body={filteredUsers}
       headers={headers}
       sortProps={{
         sortValueObj: {
