@@ -7,7 +7,6 @@ import { Button, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import CustomModal from '../../components/modal/CustomModal'
-import AddSupplies from '../../components/forms/AddSupplies'
 import SuppliesTable from '../../components/tables/SuppliesTable';
 import useFetchData from '../../hooks/UseFetchData';
 import { UserService } from "../../services/UserService";
