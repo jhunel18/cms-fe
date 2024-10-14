@@ -22,5 +22,21 @@ export const ClientService = {
             throw new Error(`Adding Data Failed: ${error.response ? error.response.data.message : error.message}`);
           }
     },
+    async getAllClients(){
+      try {
+          const response = await axios.get(`${API_URL}/api/clients/`, {
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${getToken()}` // If needed
+            },
+          });
+
+          return response.data
+      }
+      catch(error){
+          throw new Error(`Failed to fetch users: ${error.response ? error.response.data.message : error.message}`);
+      }
+
+  },
 
 }
