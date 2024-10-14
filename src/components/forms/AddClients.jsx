@@ -30,8 +30,6 @@ const AddClients = () => {
     try {
       await ClientService.addClient(formData); // Adjust based on your API's expected request body
       toast.success("User Added Successfully!");
-      onSuccess(); // Trigger success callback to refresh users list
-      onClose(); // Close modal on success
     } catch (err) {
       toast.error("An error occurred.");
       setError(error)

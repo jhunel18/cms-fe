@@ -15,7 +15,7 @@ const AddSupplies = ({ onClose, onSuccess }) => {
     expiryDate: "",
   });
 
-  const [error, setError] = useState(null);
+  // const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
@@ -29,8 +29,6 @@ const AddSupplies = ({ onClose, onSuccess }) => {
     try {
       await UserService.addSupply(formData); // Adjust based on your API's expected request body
       toast.success("Added Successfully!");
-      onSuccess(); // Trigger success callback to refresh supplies list
-      onClose(); // Close modal on success
     } catch (err) {
       toast.error("An error occured.");
       setError(error);
