@@ -31,7 +31,7 @@ const AddSupplies = ({ onClose, onSuccess }) => {
       toast.success("Added Successfully!");
     } catch (err) {
       toast.error("An error occured.");
-      setError(error);
+      setError(err);
     } finally {
       setLoading(false);
     }
