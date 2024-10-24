@@ -16,8 +16,8 @@ const AddTreatment = () => {
     const [complaint, setComplaint] = useState("");
     const [treatmentDescription, setTreatmentDescription] = useState("");
 
-     // Use effect to get the userId from the token when the component mounts
-     useEffect(() => {
+    // Use effect to get the userId from the token when the component mounts
+    useEffect(() => {
         const currentUserId = getUserId();
         if (currentUserId) {
             setUserId(currentUserId); // Set the userId to the state
@@ -25,17 +25,8 @@ const AddTreatment = () => {
     }, []);
 
     // Fetch clients and supplies
-    const {
-        data: clients,
-        loading: clientsLoading,
-        error: clientsError,
-    } = useFetchData(ClientService.getAllClients, []);
-
-    const {
-        data: supplies,
-        loading: suppliesLoading,
-        error: suppliesError,
-    } = useFetchData(UserService.getAllSupplies, []);
+    const { data: clients, loading: clientsLoading, error: clientsError } = useFetchData(ClientService.getAllClients, []);
+    const { data: supplies, loading: suppliesLoading, error: suppliesError } = useFetchData(UserService.getAllSupplies, []);
 
     // Handle adding a supply to the list
     const handleAddSupply = () => {
@@ -45,8 +36,6 @@ const AddTreatment = () => {
         }
 
         const selectedSupply = supplies.find(supply => supply.id === parseInt(selectedSupplyId));
-
-        // Check if the supply is already in the list
         const existingSupply = selectedSupplies.find(s => s.suppliesId === selectedSupplyId);
 
         if (existingSupply) {
@@ -54,13 +43,11 @@ const AddTreatment = () => {
             return;
         }
 
-        // Add the selected supply to the list
         setSelectedSupplies(prev => [
             ...prev,
             { suppliesId: selectedSupplyId, supplyName: selectedSupply.brandName, quantity }
         ]);
 
-        // Reset input fields
         setSelectedSupplyId("");
         setQuantity("");
     };
@@ -70,23 +57,13 @@ const AddTreatment = () => {
         setSelectedSupplies(prev => prev.filter(s => s.suppliesId !== supplyId));
     };
 
-    // Handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
-    
         if (selectedSupplies.length === 0) {
             toast.error("Please select at least one supply.");
             return;
         }
-    
-        // Check if any supply has a quantity less than or equal to 0
-        const hasInvalidQuantity = selectedSupplies.some(s => s.quantity <= 0);
-    
-        if (hasInvalidQuantity) {
-            toast.error("All quantities must be greater than 0.");
-            return;
-        }
-    
+
         const treatmentData = {
             clientId: selectedClientId,
             supplyRequests: selectedSupplies.map(s => ({
@@ -95,149 +72,150 @@ const AddTreatment = () => {
             })),
             complaint,
             treatmentDescription,
-            userId : userId,
+            userId: userId,
         };
-    
+
         try {
             await TreatmentService.addTreatment(treatmentData);
             toast.success("Supplies issued successfully!");
-    
-            // Reset form
             setSelectedClientId("");
             setSelectedSupplies([]);
             setComplaint("");
             setTreatmentDescription("");
         } catch (error) {
-            console.error("Error issuing supplies", error);
             toast.error("Failed to issue supplies: " + error.message);
         }
     };
-    
+
     if (clientsLoading || suppliesLoading) return <p>Loading...</p>;
     if (clientsError || suppliesError) return <p>Error loading data</p>;
 
     return (
-        <Form onSubmit={handleSubmit}>
-            <h2 className="mb-4">Issue Medical Supplies</h2>
-
-            {/* Client Selection */}
-            <Form.Group as={Row} className="mb-3">
-                <Form.Label column sm={3}>Select Client</Form.Label>
-                <Col sm={9}>
-                    <Form.Control
-                        as="select"
-                        value={selectedClientId}
-                        onChange={(e) => setSelectedClientId(e.target.value)}
-                        required
-                    >
-                        <option value="">Select Client</option>
-                        {clients.map(client => (
-                            <option key={client.id} value={client.id}>
-                                {client.fname} {client.lname}
-                            </option>
-                        ))}
-                    </Form.Control>
-                </Col>
-            </Form.Group>
-
-            {/* Supply and Quantity Input */}
-            <Row className="mb-3">
-                <Col sm={6}>
-                    <Form.Group controlId="formSupply">
-                        <Form.Label>Select Supply</Form.Label>
-                        <Form.Control
-                            as="select"
-                            value={selectedSupplyId}
-                            onChange={(e) => setSelectedSupplyId(e.target.value)}
-                        >
-                            <option value="">Select Supply</option>
-                            {supplies.map(supply => (
-                                <option key={supply.id} value={supply.id}>
-                                    {supply.brandName} ({supply.genericName})
-                                </option>
-                            ))}
-                        </Form.Control>
-                    </Form.Group>
-                </Col>
-
-                <Col sm={4}>
-                    <Form.Group controlId="formQuantity">
-                        <Form.Label>Quantity</Form.Label>
-                        <InputGroup>
+        <>
+            <Toaster position="top-center" reverseOrder={false} />
+            <h4>Issue Medical Supplies</h4>
+            <hr />
+            <Form onSubmit={handleSubmit}>
+                <Row className="mb-2">
+                    <Col md={8}>
+                        <Form.Group controlId="formClient">
+                            <Form.Label>Select Client</Form.Label>
                             <Form.Control
-                                type="number"
-                                value={quantity}
-                                onChange={(e) => setQuantity(parseInt(e.target.value) || 0)}
-                                min="1"
+                                as="select"
+                                value={selectedClientId}
+                                onChange={(e) => setSelectedClientId(e.target.value)}
+                                size="sm" // Smaller size
+                            >
+                                <option value="">Select Client</option>
+                                {clients.map(client => (
+                                    <option key={client.id} value={client.id}>
+                                        {client.fname} {client.lname}
+                                    </option>
+                                ))}
+                            </Form.Control>
+                        </Form.Group>
+                    </Col>
+                </Row>
+
+                <Row className="mb-2">
+                    <Col md={6}>
+                        <Form.Group controlId="formSupply">
+                            <Form.Label>Select Supply</Form.Label>
+                            <Form.Control
+                                as="select"
+                                value={selectedSupplyId}
+                                onChange={(e) => setSelectedSupplyId(e.target.value)}
+                                size="sm" // Smaller size
+                            >
+                                <option value="">Select Supply</option>
+                                {supplies.map(supply => (
+                                    <option key={supply.id} value={supply.id}>
+                                        {supply.brandName} ({supply.genericName})
+                                    </option>
+                                ))}
+                            </Form.Control>
+                        </Form.Group>
+                    </Col>
+                    <Col md={4}>
+                        <Form.Group controlId="formQuantity">
+                            <Form.Label>Quantity</Form.Label>
+                            <InputGroup>
+                                <Form.Control
+                                    type="number"
+                                    min="1"
+                                    value={quantity}
+                                    onChange={(e) => setQuantity(parseInt(e.target.value) || 0)}
+                                    size="sm" // Smaller size
+                                />
+                            </InputGroup>
+                        </Form.Group>
+                    </Col>
+                    <Col md={2} className="d-flex align-items-end">
+                        <Button variant="primary" size="sm" onClick={handleAddSupply}>
+                            Add
+                        </Button>
+                    </Col>
+                </Row>
+
+                <h5 className="mb-2">Selected Supplies</h5>
+                <ListGroup className="mb-4">
+                    {selectedSupplies.length === 0 ? (
+                        <ListGroup.Item>No supplies selected.</ListGroup.Item>
+                    ) : (
+                        selectedSupplies.map(s => (
+                            <ListGroup.Item key={s.suppliesId}>
+                                <Row>
+                                    <Col>{s.supplyName}</Col>
+                                    <Col>{s.quantity}</Col>
+                                    <Col>
+                                        <Button
+                                            variant="danger"
+                                            size="sm"
+                                            onClick={() => handleRemoveSupply(s.suppliesId)}
+                                        >
+                                            Remove
+                                        </Button>
+                                    </Col>
+                                </Row>
+                            </ListGroup.Item>
+                        ))
+                    )}
+                </ListGroup>
+
+                <Row className="mb-2">
+                    <Col md={6}>
+                        <Form.Group controlId="formComplaint">
+                            <Form.Label>Complaint</Form.Label>
+                            <Form.Control
+                                type="text"
+                                value={complaint}
+                                onChange={(e) => setComplaint(e.target.value)}
+                                placeholder="Enter complaint"
+                                size="sm" // Smaller size
                             />
-                        </InputGroup>
-                    </Form.Group>
-                </Col>
+                        </Form.Group>
+                    </Col>
+                    <Col md={6}>
+                        <Form.Group controlId="formTreatmentDescription">
+                            <Form.Label>Treatment Description</Form.Label>
+                            <Form.Control
+                                type="text"
+                                value={treatmentDescription}
+                                onChange={(e) => setTreatmentDescription(e.target.value)}
+                                placeholder="Enter treatment description"
+                                size="sm" // Smaller size
+                            />
+                        </Form.Group>
+                    </Col>
+                </Row>
 
-                <Col sm={2} className="d-flex align-items-end">
-                    <Button variant="primary" onClick={handleAddSupply}>
-                        Add
+                <div className="text-end">
+                    <Button variant="primary" type="submit" size="sm">
+                        Issue Supplies
                     </Button>
-                </Col>
-            </Row>
-
-            {/* Selected Supplies List */}
-            <h5 className="mb-3">Selected Supplies</h5>
-            <ListGroup className="mb-4">
-                {selectedSupplies.length === 0 ? (
-                    <ListGroup.Item>No supplies selected.</ListGroup.Item>
-                ) : (
-                    selectedSupplies.map(s => (
-                        <ListGroup.Item key={s.suppliesId}>
-                            <Row>
-                                <Col>{s.supplyName}</Col>
-                                <Col>{s.quantity}</Col>
-                                <Col sm="auto">
-                                    <Button
-                                        variant="danger"
-                                        size="sm"
-                                        onClick={() => handleRemoveSupply(s.suppliesId)}
-                                    >
-                                        Remove
-                                    </Button>
-                                </Col>
-                            </Row>
-                        </ListGroup.Item>
-                    ))
-                )}
-            </ListGroup>
-
-            {/* Complaint and Treatment Description */}
-            <Form.Group as={Row} className="mb-3">
-                <Form.Label column sm={3}>Complaint</Form.Label>
-                <Col sm={9}>
-                    <Form.Control
-                        type="text"
-                        value={complaint}
-                        onChange={(e) => setComplaint(e.target.value)}
-                        required
-                    />
-                </Col>
-            </Form.Group>
-
-            <Form.Group as={Row} className="mb-3">
-                <Form.Label column sm={3}>Treatment Description</Form.Label>
-                <Col sm={9}>
-                    <Form.Control
-                        type="text"
-                        value={treatmentDescription}
-                        onChange={(e) => setTreatmentDescription(e.target.value)}
-                        required
-                    />
-                </Col>
-            </Form.Group>
-
-            {/* Submit Button */}
-            <Button type="submit" variant="success" className="mt-3">
-                Issue Supplies
-            </Button>
-            <Toaster />
-        </Form>
+                </div>
+            </Form>
+        </>
     );
 };
 

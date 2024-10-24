@@ -14,8 +14,8 @@ const UserDashboardPage = () => {
       <div
         className="d-flex justify-content-center custom-wrapper"
       >
-        <CustomCard title={"50"} content={"Stocks"} icon={faCheckCircle} type = "success"/>
-        <CustomCard title={"50"} content={"Clients"} icon={faUserFriends} type = "primary"/>
+        <CustomCard title={"50"} content={"Total Supplies "} icon={faCheckCircle} type = "success"/>
+        <CustomCard title={"50"} content={"Total Treatments"} icon={faUserFriends} type = "primary"/>
         <CustomCard
           title={"50"}
           content={"Critical Items"}
