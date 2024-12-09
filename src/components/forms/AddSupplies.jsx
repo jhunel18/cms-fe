@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { UserService } from "../../services/UserService"; // Assuming you have this service for handling supplies
 import toast, { Toaster } from "react-hot-toast";
+import { getUserId } from "../../utils/TokenHelpers";
 const AddSupplies = ({ onClose, onSuccess }) => {
+  const [userId, setUserId] = useState(""); // Assuming you have a way to set the current user's ID
   const [formData, setFormData] = useState({
     brandName: "",
     genericName: "",
@@ -15,6 +17,13 @@ const AddSupplies = ({ onClose, onSuccess }) => {
     expiryDate: "",
   });
 
+    // Use effect to get the userId from the token when the component mounts
+    useEffect(() => {
+      const currentUserId = getUserId();
+      if (currentUserId) {
+          setUserId(currentUserId); // Set the userId to the state
+      }
+  }, []);
   // const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -27,7 +36,12 @@ const AddSupplies = ({ onClose, onSuccess }) => {
     e.preventDefault();
     setLoading(true);
     try {
-      await UserService.addSupply(formData); // Adjust based on your API's expected request body
+      const payload = {
+        ...formData,
+        userId: userId, // Include userId
+      };
+      
+      await UserService.addSupply(payload); // Adjust based on your API's expected request body
       toast.success("Added Successfully!");
     } catch (err) {
       toast.error("An error occured.");
