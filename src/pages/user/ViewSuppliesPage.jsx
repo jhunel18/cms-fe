@@ -10,6 +10,7 @@ import CustomModal from '../../components/modal/CustomModal'
 import SuppliesTable from '../../components/tables/SuppliesTable';
 import useFetchData from '../../hooks/UseFetchData';
 import { UserService } from "../../services/UserService";
+import { getUserId } from "../../utils/TokenHelpers";
 
 const SuppliesPage = () => {
   const { menuItems, username } = useDashboardData(getUserRole());
@@ -17,12 +18,14 @@ const SuppliesPage = () => {
   const [selectedSupply, setSelectedSupply] = useState(null); // Store the user to delete
 
   const navigate = useNavigate();
+  const userId = getUserId(); // Get userId from token
+  
   const {
     data: supplies,
     error,
     loading,
     refetch,
-  } = useFetchData(UserService.getAllSupplies, []);
+  } = useFetchData(() => UserService.getAllSuppliesByUser(userId), [userId]);
   
   const handleDelete = (supplyId) => {
     UserService.deleteSupply(supplyId)

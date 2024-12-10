@@ -37,6 +37,22 @@ export const UserService = {
         }
 
     },
+    async getAllSuppliesByUser(userId){
+      try {
+          const response = await axios.get(`${API_URL}/api/supplies/${userId}`, {
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${getToken()}` // If needed
+            },
+          });
+
+          return response.data
+      }
+      catch(error){
+          throw new Error(`Failed to fetch users: ${error.response ? error.response.data.message : error.message}`);
+      }
+
+  },
 
     async deleteSupply(id){
       try {
