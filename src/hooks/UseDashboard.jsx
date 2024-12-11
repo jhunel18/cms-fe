@@ -61,8 +61,8 @@ export function useDashboardData(role) {
                     icon: faFileAlt,
                     subMenu: [
                       { name: 'Services Rendered', to: '/reports/medical-services' },
+                      { name: 'Drugs & Medicine Report', to: '/reports/drug-medicine-report' },
                       { name: 'Supplies Report', to: '/reports/supplies-report' },
-                      { name: 'Inventory Report', to: '/reports/inventory-report' },
                     ]
                 },
             ]);
