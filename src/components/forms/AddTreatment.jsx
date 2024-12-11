@@ -54,6 +54,22 @@ const AddTreatment = () => {
     const selectedSupply = supplies.find(
       (supply) => supply.id === parseInt(selectedSupplyId)
     );
+
+    if (!selectedSupply) {
+        toast.error("Selected supply not found.");
+        return;
+    }
+
+     // Assuming this field exists in the supply data
+     console.log(quantity)
+     console.log(selectedSupply.quantity)
+    if (quantity > selectedSupply.quantity) {
+      toast.error(
+        `Requested quantity exceeds available stock (${selectedSupply.quantity} available).`
+      );
+      return;
+    }
+
     const existingSupply = selectedSupplies.find(
       (s) => s.suppliesId === selectedSupplyId
     );
@@ -158,7 +174,7 @@ const AddTreatment = () => {
                 <option value="">Select Supply</option>
                 {supplies.map((supply) => (
                   <option key={supply.id} value={supply.id}>
-                    {supply.brandName} ({supply.genericName})
+                    {supply.brandName} ({supply.genericName}) {supply.quantity}
                   </option>
                 ))}
               </Form.Control>
