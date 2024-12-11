@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { ClientService } from "../../services/ClientService"; // Assuming you have this service for handling user data
 import toast, { Toaster } from "react-hot-toast";
-
+import { getUserId } from "../../utils/TokenHelpers";
 const AddClients = () => {
+  const [userId, setUserId] = useState(""); // Assuming you have a way to set the current user's ID
   const [formData, setFormData] = useState({
     fname: "",
     mname: "",
@@ -15,6 +16,14 @@ const AddClients = () => {
     section: "",
     department: "",
   });
+
+  // Use effect to get the userId from the token when the component mounts
+  useEffect(() => {
+    const currentUserId = getUserId();
+    if (currentUserId) {
+        setUserId(currentUserId); // Set the userId to the state
+    }
+}, []);
 
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -28,7 +37,11 @@ const AddClients = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      await ClientService.addClient(formData); // Adjust based on your API's expected request body
+      const payload = {
+        ...formData,
+        userId: userId, // Include userId
+      };
+      await ClientService.addClient(payload); // Adjust based on your API's expected request body
       toast.success("User Added Successfully!");
     } catch (err) {
       toast.error("An error occurred.");

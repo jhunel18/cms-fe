@@ -10,6 +10,7 @@ import CustomModal from "../../components/modal/CustomModal";
 import useFetchData from "../../hooks/UseFetchData";
 import { ClientService } from "../../services/ClientService";
 import ClientsTable from "../../components/tables/ClientsTable";
+import { getUserId } from "../../utils/TokenHelpers";
 
 const ViewClientsPage = () => {
   const { menuItems, username } = useDashboardData(getUserRole());
@@ -17,12 +18,13 @@ const ViewClientsPage = () => {
   const [selectedClient, setSelectedClient] = useState(null); // Store the user to delete
 
   const navigate = useNavigate();
+  const userId = getUserId(); // Get userId from token
   const {
     data: clients,
     error,
     loading,
     refetch,
-  } = useFetchData(ClientService.getAllClients, []);
+  } = useFetchData(() => ClientService.getAllClientsByUser(userId), [userId]);
 
   const handleDelete = (clientId) => {
     ClientService.deleteClient(clientId)
