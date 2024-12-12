@@ -41,6 +41,23 @@ export const AdminService = {
 
     },
 
+    async getUserById(userId){
+      try {
+          const response = await axios.get(`${API_URL}/api/admin/${userId}`, {
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${getToken()}` // If needed
+            },
+          });
+
+          return response.data
+      }
+      catch(error){
+          throw new Error(`Failed to fetch users: ${error.response ? error.response.data.message : error.message}`);
+      }
+
+  },
+
     async deleteUser(id){
       try {
         const response = await axios.delete(`${API_URL}/api/admin/${id}`, {
