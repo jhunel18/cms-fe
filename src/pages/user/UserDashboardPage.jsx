@@ -6,7 +6,7 @@ import CustomCard from "../../components/card/CustomCard";
 import { Table, Row, Col } from 'react-bootstrap';
 import { faCheckCircle, faMedkit, faUserFriends } from "@fortawesome/free-solid-svg-icons";
 import SuppliesUsageChart from "../../components/charts/SuppliesUsageChart";
-import DemandFluctuationsChart from "../../components/charts/DemanFluctuationsChart";
+import DemandFluctuationsChart from "../../components/charts/DemandFluctuationsChart";
 
 const UserDashboardPage = () => {
   
