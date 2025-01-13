@@ -51,7 +51,7 @@ const DemandFluctuationsChart = () => {
    const labels = Array.from({ length: Math.max(forecastValues.actual.length, forecastValues.predicted.length) }, (_, i) => {
     const year = Math.floor(i / 4) + 1;  // Determine the year (1 for first year, 2 for second year, etc.)
     const quarter = (i % 4) + 1;         // Determine the quarter (1, 2, 3, or 4)
-    return `Q${quarter} Year ${year}`;
+    return `Year ${year} Q${quarter} `;
   });
 
   const demandData = {
