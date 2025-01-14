@@ -9,6 +9,7 @@ import UserProfile from "../../ui/UserProfile";
 import { AuthenticationService } from "../../services/AuthenticationService";
 
 import image from "../../assets/avatar.png";
+import SidebarAccountDropdown from "../../ui/SidebarAccountDropdown";
 
 const Sidebar = ({ menuItems, toggleSidebar }) => {
   const [isNotActive, setNotActive] = useState(false);
@@ -79,6 +80,7 @@ const Sidebar = ({ menuItems, toggleSidebar }) => {
               </li>
             ))}
           </ul>
+          
         </nav>
       </div>
     </div>

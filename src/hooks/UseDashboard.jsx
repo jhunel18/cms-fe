@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { faTachometerAlt, faUsersCog, faFileAlt, faUser, faSuitcaseMedical, faNotesMedical } from '@fortawesome/free-solid-svg-icons';
+import { faTachometerAlt, faFileAlt,faUserFriends, faPills, faFileMedical, faChartBar } from '@fortawesome/free-solid-svg-icons';
 
 export function useDashboardData(role) {
     const [menuItems, setMenuItems] = useState([]);
@@ -12,7 +12,7 @@ export function useDashboardData(role) {
                 // { name: 'Manage Users', icon: faUsersCog, to: '/view-users' },
                 {
                     name: 'Manage Users', 
-                    icon: faFileAlt,
+                    icon: faUserFriends,
                     subMenu: [
                       { name: 'Add User', to: '/manage-users/add' },
                       { name: 'View Users', to: '/manage-users/view' },
@@ -28,7 +28,7 @@ export function useDashboardData(role) {
                 //Links for Manage Clients
                 {
                     name: 'Manage Clients', 
-                    icon: faFileAlt,
+                    icon: faUserFriends,
                     subMenu: [
                       { name: 'Add Client', to: '/clients/add' },
                       { name: 'View Clients', to: '/clients/view' },
@@ -37,7 +37,7 @@ export function useDashboardData(role) {
                 // Links for Manage Supplies
                 {
                     name: 'Manage Supplies', 
-                    icon: faFileAlt,
+                    icon: faPills,
                     subMenu: [
                       { name: 'Add Supply', to: '/supplies/add' },
                       { name: 'View Supplies', to: '/supplies/view' },
@@ -48,7 +48,7 @@ export function useDashboardData(role) {
                 //Links for Treatment Record
                 {
                     name: 'Treatment Record', 
-                    icon: faFileAlt,
+                    icon: faFileMedical,
                     subMenu: [
                       { name: 'New Treatment', to: '/treatments/add' },
                       { name: 'View Treatments', to: '/treatments/view' },
@@ -58,7 +58,7 @@ export function useDashboardData(role) {
                 //Links for Reports
                 { 
                     name: 'Reports', 
-                    icon: faFileAlt,
+                    icon: faChartBar,
                     subMenu: [
                       { name: 'Services Rendered', to: '/reports/medical-services' },
                       { name: 'Drugs & Medicine Report', to: '/reports/drug-medicine-report' },
