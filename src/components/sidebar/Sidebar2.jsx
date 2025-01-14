@@ -1,15 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Navbar, Dropdown, NavLink } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSignOut } from "@fortawesome/free-solid-svg-icons";
 import "./sidebar.css";
 import UserProfile from "../../ui/UserProfile";
 import { AuthenticationService } from "../../services/AuthenticationService";
-
 import image from "../../assets/avatar.png";
-import SidebarAccountDropdown from "../../ui/SidebarAccountDropdown";
+
 
 const Sidebar = ({ menuItems, toggleSidebar }) => {
   const [isNotActive, setNotActive] = useState(false);
@@ -28,14 +25,19 @@ const Sidebar = ({ menuItems, toggleSidebar }) => {
     }
   };
 
+  const handleSidebarToggle = () => {
+    setNotActive(!isNotActive);
+    toggleSidebar(!isNotActive); // Notify parent about sidebar state change
+  };
+
   return (
     <div>
-      <div className="wrapper">
+      <div className={`wrapper ${isNotActive ? "active" : ""}`}>
         <nav id="sidebar" className={isNotActive ? "active" : ""}>
           <button
             type="button"
             id="sidebarCollapse"
-            onClick={() => setNotActive(!isNotActive)}
+            onClick= {handleSidebarToggle}
             className="btn btn-custom"
           >
             {isNotActive ? (
