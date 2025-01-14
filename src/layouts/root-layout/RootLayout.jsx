@@ -10,6 +10,18 @@ const RootLayout = ({ children, menuItems, username }) => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
+  const getResponsiveStyles = () => {
+    const isSmallScreen = window.innerWidth < 768; // Define small screen breakpoint
+    const openWidth = isSmallScreen ? "50px" : "250px"; // Open width (small or large screens)
+    const collapsedWidth = isSmallScreen ? "50px" : "100px"; // Collapsed width (small or large screens)
+    const sidebarWidth = isSidebarOpen ? openWidth : collapsedWidth;
+
+    return {
+      marginLeft: sidebarWidth,
+      width: `calc(100% - ${sidebarWidth})`,
+    };
+  };
+
   return (
     <div>
       <Container fluid>
@@ -21,12 +33,10 @@ const RootLayout = ({ children, menuItems, username }) => {
             toggleSidebar={toggleSidebar}
           />
           <Col
-            className="px-0"
+            className="content-area px-0"
             style={{
-              transition: 'margin-left 0.3s ease-in-out',
-              marginLeft: isSidebarOpen ? '250px' : '50px',  // Sidebar width adjusted here
-              width: isSidebarOpen ? 'calc(100% - 250px)' : '100%',  // Adjust content width based on sidebar state
-              marginTop: '56px', // Adjust to prevent header overlap
+              transition: "all 0.3s ease-in-out",
+              ...getResponsiveStyles(), // Apply dynamic styles
             }}
           >
             {/* <Header username={username} toggleSidebar={toggleSidebar} /> */}

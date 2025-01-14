@@ -1,23 +1,25 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import "./sidebar.css";
 import UserProfile from "../../ui/UserProfile";
 import { AuthenticationService } from "../../services/AuthenticationService";
 import image from "../../assets/avatar.png";
 
-
 const Sidebar = ({ menuItems, toggleSidebar }) => {
   const [isNotActive, setNotActive] = useState(false);
   const [expandedIndex, setExpandedIndex] = useState(null);
-  
-  const navigate = useNavigate();
-  const handleLogout = () => {
-      AuthenticationService.logout();
-      navigate("/"); // Redirect to the login page after logout
-    };
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 768);
 
+  const navigate = useNavigate();
+
+  // Handle logout
+  const handleLogout = () => {
+    AuthenticationService.logout();
+    navigate("/"); // Redirect to the login page after logout
+  };
+
+  // Handle submenu toggle
   const handleClick = (item, index, event) => {
     if (item.subMenu) {
       event.preventDefault();
@@ -25,10 +27,25 @@ const Sidebar = ({ menuItems, toggleSidebar }) => {
     }
   };
 
+  // Handle sidebar toggle
   const handleSidebarToggle = () => {
     setNotActive(!isNotActive);
     toggleSidebar(!isNotActive); // Notify parent about sidebar state change
   };
+
+  // Detect screen size changes
+  useEffect(() => {
+    const handleResize = () => {
+      const smallScreen = window.innerWidth <= 768;
+      setIsSmallScreen(smallScreen);
+      if (smallScreen) {
+        setNotActive(true); // Automatically hide the sidebar on small screens
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <div>
@@ -37,7 +54,7 @@ const Sidebar = ({ menuItems, toggleSidebar }) => {
           <button
             type="button"
             id="sidebarCollapse"
-            onClick= {handleSidebarToggle}
+            onClick={handleSidebarToggle}
             className="btn btn-custom"
           >
             {isNotActive ? (
@@ -82,7 +99,6 @@ const Sidebar = ({ menuItems, toggleSidebar }) => {
               </li>
             ))}
           </ul>
-          
         </nav>
       </div>
     </div>
